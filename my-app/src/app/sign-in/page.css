@@ -1,0 +1,36 @@
+/* src/app/sign-in/page.css */
+.sign-in-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Light background for contrast */
+  }
+  
+  .sign-in-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 260px; /* Button width */
+    padding: 10px; /* Padding */
+    background-color: white; /* Google blue color */
+    color: black; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 32px; /* Rounded corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+  }
+  
+  .sign-in-button:hover {
+    background-color: #e0e0e0; /* Darker blue on hover */
+  }
+  
+  .google-logo {
+    width: 24px; /* Adjust logo size */
+    height: 24px; /* Adjust logo size */
+    margin-right: 17px; /* Space between logo and text */
+  }
+  

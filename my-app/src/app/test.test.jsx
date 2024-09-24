@@ -5,8 +5,8 @@ import Test from './test';
 describe('display hello world',() =>{
     it('display hello world', () =>{
         render(<Test />)
-
-        expect("hello world").toBeInTheDocument()
+        const message = screen.getByRole('heading', { level: 1 })
+        expect(message).toBeInTheDocument()
     })
 });
 

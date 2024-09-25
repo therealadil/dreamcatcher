@@ -42,6 +42,8 @@ import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { supabase } from '../../../lib/supabaseClient'; // Adjust this import path as needed
 import './Header.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'; // Example icon (log out)
 
 const Header = () => {
     const router = useRouter();
@@ -66,7 +68,8 @@ const Header = () => {
         <header className="header">
             <h1>🌙 DreamCatcher</h1>
             {showLogoutButton && (
-                <button className='button' onClick={handleLogout}>Log out</button>
+                <button className='button' onClick={handleLogout}>        <FontAwesomeIcon icon={faSignOutAlt} />Log out
+</button>
             )}
         </header>
     );

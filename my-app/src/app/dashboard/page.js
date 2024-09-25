@@ -1,3 +1,10 @@
+/**
+ * The Dashboard component is the main page for the application's dashboard functionality.
+ * It fetches the current user's data and their dream entries from the Supabase database,
+ * and displays the dream entries on the page.
+ *
+ * @returns {JSX.Element} The rendered Dashboard component.
+ */
 "use client";
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';

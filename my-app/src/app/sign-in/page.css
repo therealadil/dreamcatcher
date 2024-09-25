@@ -1,44 +1,100 @@
 /* src/app/sign-in/page.css */
-body {
-  background-color: #612095;
-  margin: 0;
-  padding: 0;
+
+.sign-in-page {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
+  flex: 1; /* This will make it grow to fill available space */
+  padding: 2rem; /* Reduced padding */
+  box-sizing: border-box;
+  background-image: url('https://snipboard.io/0rjoHx.jpg'); /* Background image */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image repeat */
+  position: relative; /* Required for absolute positioning of overlay */
+}
+
+.sign-in-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(125, 89, 192, 0.5); /* Semi-transparent overlay */
+  z-index: 1; /* Place the overlay above the background */
+}
+
+/* Faded edges effect */
+.sign-in-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://snipboard.io/0rjoHx.jpg'); /* Background image */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  filter: blur(20px); /* Apply blur effect */
+  opacity: 0.3; /* Adjust opacity to blend with the background */
+  z-index: 0; /* Place this below the overlay */
 }
 
 .sign-in-container {
-  background-color: #CCB8F0;
-  padding: 2rem;
-  border-radius: 8px;
+  background-color: #7d59c0; /* Adjust if you want a different color */
+  text-align: center;
+  padding: 30px 20px 20px 20px; /* Adjusted padding for better spacing */
+  border-radius: 12px; /* Slightly larger border radius */
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  width: 90%;
+  max-width: 400px; /* Limit max width for better aesthetics */
+  line-height: 1;
+  position: relative; /* Required to keep the container above the overlay */
+  z-index: 2; /* Make sure the container is above the overlay */
 }
 
-h1 {
-  color: #333;
-  margin-bottom: 1rem;
+.sign-in-container h1 {
+  font-size: 1.5rem; /* Increased font size for the heading */
+  margin: 0; /* Remove margin to keep heading on one line */
+  padding: 0; /* Remove padding to reduce excess space */
+  white-space: nowrap; /* Prevent line break */
+  margin-bottom: 10px;
+}
+
+.sign-in-description {
+  margin: 0.5rem 0 1.5rem; /* Adjusted margins for better spacing */
+  font-size: 0.9rem; /* Smaller font size for description */
+  color: #ffffff; /* White text color for contrast */
+}
+
+.terms {
+  margin: 0.5rem 0 1.5rem; /* Adjusted margins for better spacing */
+  font-size: 0.7rem; /* Smaller font size for description */
+  color: #ffffff8f; /* White text color for contrast */
 }
 
 .sign-in-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  color: white;
+  background-color: #EC4899;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 7px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
+  margin-bottom: 20px;
 }
 
 .sign-in-button:hover {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; /* Change background on hover */
 }
 
 .google-logo {

@@ -1,5 +1,6 @@
 .header {
     position: relative;
+    width: 100%;
     padding: 10px;
     background-color: #7b2cbc;
     display: flex; /* Use flexbox for layout */

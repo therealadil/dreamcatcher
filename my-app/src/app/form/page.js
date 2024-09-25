@@ -6,9 +6,19 @@ import styles from './page.module.css';
 
 export default function FormPage() {
   const [textState, setTextState] = useState('')
+  const [dateState, setDateState] = useState('')
+  const [titleState, setTitleState] = useState('')
 
-  const handleChange = (event) => {
+  const handleTextChange = (event) => {
     setTextState(event.target.value);
+  }
+
+  const handleDateChange = (event) => {
+    setDateState(event.target.value);
+  }
+
+  const handleTitleChange = (event) => {
+    setTitleState(event.target.value);
   }
 
   const handleSubmit = (event) => {
@@ -16,10 +26,22 @@ export default function FormPage() {
   }
 
   return(
-    <div
-      className={styles.page}
-    >
+    <div className={styles.page}>
       <form onSubmit={handleSubmit}>
+        <div className={styles.textwrapper}>
+          <input
+            type="text"
+            id="dreamtitle"
+            name="dreamtitle"
+            placeholder="Enter your dream here"
+            className={[
+              styles.fullwidth,
+              styles.rounded,
+              styles.box,
+            ].join(' ')}
+            onChange = {handleTitleChange}
+          />
+        </div>
         <div className={styles.textwrapper}>
           <textarea
             id="dreamtext"
@@ -30,7 +52,18 @@ export default function FormPage() {
               styles.rounded,
               styles.box,
             ].join(' ')}
-            onChange = {handleChange}
+            onChange = {handleTextChange}
+          />
+        </div>
+        <div className={styles.textwrapper}>
+          <input
+            type="date"
+            className={[
+              styles.fullwidth,
+              styles.rounded,
+              styles.box,
+            ].join(' ')}
+            onChange = {handleDateChange}
           />
         </div>
         <div>

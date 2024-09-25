@@ -8,6 +8,7 @@ export default function Home() {
       <button className="mt-6 bg-blue-500 text-white px-4 py-2 rounded">
         <Link href="/sign-in">Get Started!</Link>
       </button>
+      <h1>hi</h1>
     </div>
   );
 }

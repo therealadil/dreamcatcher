@@ -32,6 +32,7 @@ export default function FormPage() {
     const { error } = await supabase
     .from('dream_entries')
     .insert({ user_id: thisUser.id, title: titleState, entry: textState, created_at: dateState })
+    router.push('/dashboard');
   }
 
   const fetchUser = async () => {

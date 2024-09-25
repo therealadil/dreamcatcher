@@ -45,7 +45,7 @@ a {
 @tailwind components;
 @tailwind utilities; */
 
-/* Custom styles */
+/* Custom styles
 body {
   background-color: black;
   color: white;
@@ -61,4 +61,4 @@ footer {
 
 main {
   background-color: indigo;
-}
+} */

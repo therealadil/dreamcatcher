@@ -55,31 +55,65 @@ const Dashboard = () => {
     return <div>Loading...</div>;
   }
 
-  return (
-    <div>
-      <section className={styles.dashboard_dreams_container}>
-        <article>
-          <h2 className={styles.dashboard_heading}>Your Dreams</h2>
+// return (
+//   <div>
+//     <section className={styles.dashboard_dreams_container}>
+//       <article>
+//         <h2 className={styles.dashboard_heading}>Your Dreams</h2>
 
-          {dreamEntries.map((entry) => (
+//         {dreamEntries
+//           .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at in descending order
+//           .map((entry) => (
+//             <div key={entry.id} className={styles.dream}>
+//               <h2>{entry.title}</h2>
+//               <p>{entry.entry}</p>
+//               <p>Created at: {entry.created_at}</p>
+//             </div>
+//           ))}
+//       </article>
+//     </section>
+//     <section>
+//       <article className={styles.dream_button_container}>
+//         <Link href="/form">
+//           <button className={styles.dream_button}>+</button>
+//         </Link>
+//         <button className={styles.dream_button}>View More</button>
+//       </article>
+//     </section>
+//   </div>
+// );
+
+return (
+  <div>
+    <section className={styles.dashboard_dreams_container}>
+      <article>
+        <h2 className={styles.dashboard_heading}>Your Dreams</h2>
+
+        {dreamEntries
+          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at in descending order
+          .map((entry) => (
             <div key={entry.id} className={styles.dream}>
               <h2>{entry.title}</h2>
               <p>{entry.entry}</p>
               <p>Created at: {entry.created_at}</p>
             </div>
           ))}
-        </article>
-      </section>
-      <section>
-        <article className={styles.dream_button_container}>
-          <Link href="/form">
-            <button className={styles.dream_button}>+</button>
-          </Link>
-          <button className={styles.dream_button}>View More</button>
-        </article>
-      </section>
-    </div>
-  );
+      </article>
+      
+      {/* View More button centralized at the end */}
+      <div className={styles.viewMoreContainer}>
+        <button className={styles.dream_button}>View More</button>
+      </div>
+    </section>
+    
+    {/* Fixed button in bottom corner */}
+    <Link href="/form">
+      <button className={styles.fixedPlusButton}>+</button>
+    </Link>
+  </div>
+);
+
+
 };
 
 export default Dashboard;

@@ -1,5 +1,9 @@
-import './globals.css';
 "use Client";
+
+import './globals.css';
+import Header from './components/Header/Header'; // Correct path to import Header
+import Footer from './components/Footer/Footer'; // Correct path to import Header
+
 
 
 
@@ -12,13 +16,11 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body>
-        <header>
-          <h1>Dreamcatcher</h1>
-        </header>
+        <Header>
+        </Header>
         <main>{children}</main>
-        <footer>
-          <p>© 2024 Dreamcatcher</p>
-        </footer>
+        <Footer>
+        </Footer>
       </body>
     </html>
   );

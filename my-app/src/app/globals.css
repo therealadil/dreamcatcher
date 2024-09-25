@@ -45,9 +45,9 @@ a {
 @tailwind components;
 @tailwind utilities; */
 
-/* Custom styles */
 
-/* body {
+/* Custom styles */
+  body {
   background-color: black;
   color: white;
 }

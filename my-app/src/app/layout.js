@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <html>
       <body>
         <header>
-          <h1>Dreamcatcher</h1>
+          <h1>DreamCatcher</h1>
         </header>
         <main>{children}</main>
         <footer>

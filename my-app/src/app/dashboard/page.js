@@ -56,28 +56,25 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      <div>
-        <section className={styles.dashboard_dreams_container}>
-          <article>
-            <h2 className={styles.dashboard_heading}>Your Dream</h2>
+      <section className={styles.dashboard_dreams_container}>
+        <article>
+          <h2 className={styles.dashboard_heading}>Your Dream</h2>
 
-            {dreamEntries.map((entry) => (
-              <div key={entry.id} className={styles.dream}>
-                <h2>{entry.title}</h2>
-                <p>{entry.entry}</p>
-                <p>Created at: {entry.created_at}</p>
-              </div>
-            ))}
-          </article>
-        </section>
-        <section>
-          <article className={styles.dream_button_container}>
-            <button className={styles.dream_button}>+</button>
-            <button className={styles.dream_button}>View More</button>
-          </article>
-        </section>
-      </div>
+          {dreamEntries.map((entry) => (
+            <div key={entry.id} className={styles.dream}>
+              <h2>{entry.title}</h2>
+              <p>{entry.entry}</p>
+              <p>Created at: {entry.created_at}</p>
+            </div>
+          ))}
+        </article>
+      </section>
+      <section>
+        <article className={styles.dream_button_container}>
+          <button className={styles.dream_button}>+</button>
+          <button className={styles.dream_button}>View More</button>
+        </article>
+      </section>
     </div>
   );
 };

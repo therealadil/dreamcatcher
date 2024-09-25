@@ -5,9 +5,11 @@ import { supabase } from '../../lib/supabaseClient';
 import styles from './page.module.css';
 
 export default function FormPage() {
+  const router = useRouter();
   const [textState, setTextState] = useState('')
   const [dateState, setDateState] = useState('')
   const [titleState, setTitleState] = useState('')
+  const [userState, setUserState] = useState('')
 
   const handleTextChange = (event) => {
     setTextState(event.target.value);
@@ -21,9 +23,35 @@ export default function FormPage() {
     setTitleState(event.target.value);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    await fetchUser()
+    //console.log(await supabase);
+
+    const { error } = await supabase
+    .from('dream_entries')
+    .insert({ user_id: userState.id, title: titleState, entry: textState, created_at: dateState })
   }
+
+  const fetchUser = async () => {
+    try {
+      const {
+        data: { user: userData },
+        error: userError,
+      } = await supabase.auth.getUser();
+
+      if (userError || !userData) {
+        console.error("Error fetching user data:", userError?.message);
+        return;
+      }
+
+      setUserState(userData);
+      console.log(userData);
+    } catch (error) {
+      console.error("Error fetching user and dream entries:", error.message);
+    }
+  };
 
   return(
     <div className={styles.page}>

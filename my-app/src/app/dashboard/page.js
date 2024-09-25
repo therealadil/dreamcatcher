@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 const Dashboard = () => {
   const [dreamEntries, setDreamEntries] = useState([]);
@@ -71,7 +72,9 @@ const Dashboard = () => {
       </section>
       <section>
         <article className={styles.dream_button_container}>
-          <button className={styles.dream_button}>+</button>
+          <Link href="/form">
+            <button className={styles.dream_button}>+</button>
+          </Link>
           <button className={styles.dream_button}>View More</button>
         </article>
       </section>

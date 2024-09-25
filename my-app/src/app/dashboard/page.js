@@ -93,19 +93,21 @@ return (
           .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at in descending order
           .map((entry) => (
             <div key={entry.id} className={styles.dream}>
+              <p>{new Date(entry.created_at).toLocaleDateString()}</p>
               <h2>{entry.title}</h2>
               <p>{entry.entry}</p>
-              <p>Created at: {entry.created_at}</p>
             </div>
           ))}
       </article>
-      
-      {/* View More button centralized at the end */}
-      <div className={styles.viewMoreContainer}>
-        <button className={styles.dream_button}>View More</button>
-      </div>
+
+      {/* View More button centralized at the end, only shown if there are more than 3 entries */}
+      {dreamEntries.length > 3 && (
+        <div className={styles.viewMoreContainer}>
+          <button className={styles.dream_button}>View More</button>
+        </div>
+      )}
     </section>
-    
+
     {/* Fixed button in bottom corner */}
     <Link href="/form">
       <button className={styles.fixedPlusButton}>+</button>

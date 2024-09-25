@@ -36,10 +36,15 @@
   margin: 1rem 0; /* Adjusts margin for the button */
 }
 
+.dream h2 {
+  font-weight: normal; /* Make the title bold */
+}
+
+
 /* Fixed button styles */
 .fixedPlusButton {
   position: fixed; /* Fixes the button in place */
-  bottom: 30px; /* Adjust this value to move it higher or lower from the bottom */
+  bottom: 80px; /* Adjust this value to move it higher or lower from the bottom */
   right: 30px; /* Adjust this value to move it left or right */
   background-color: #ec4899;
   color: #ffffff;
@@ -49,10 +54,8 @@
   border: none;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
-  display: flex; /* Flexbox for centering */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  font-size: 32px; /* Adjusted font size for the plus sign */
+  font-size: 42px; /* Adjusted font size for the plus sign */
   line-height: 1; /* Ensures there's no extra space around the text */
-  padding: 0; /* Reset padding to avoid additional space around the text */
+  padding-bottom: 9px; /* Reset padding to avoid additional space around the text */
+  padding-left: 7px;
 }

@@ -68,7 +68,7 @@ const Header = () => {
         <header className="header">
             <h1>🌙 DreamCatcher</h1>
             {showLogoutButton && (
-                <button className='button' onClick={handleLogout}>        <FontAwesomeIcon icon={faSignOutAlt} />Log out
+                <button className='button' onClick={handleLogout}>        <FontAwesomeIcon icon={faSignOutAlt} />
 </button>
             )}
         </header>

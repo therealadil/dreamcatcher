@@ -59,7 +59,7 @@ const Dashboard = () => {
     <div>
       <section className={styles.dashboard_dreams_container}>
         <article>
-          <h2 className={styles.dashboard_heading}>Your Dream</h2>
+          <h2 className={styles.dashboard_heading}>Your Dreams</h2>
 
           {dreamEntries.map((entry) => (
             <div key={entry.id} className={styles.dream}>

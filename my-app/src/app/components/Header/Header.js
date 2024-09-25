@@ -68,11 +68,15 @@ const Header = () => {
         <header className="header">
             <h1>🌙 DreamCatcher</h1>
             {showLogoutButton && (
-                <button className='button' onClick={handleLogout}>        <FontAwesomeIcon icon={faSignOutAlt} />
-</button>
+                <div className="button-container">
+                    <button className="button" onClick={handleLogout}>
+                        <FontAwesomeIcon icon={faSignOutAlt} />
+                    </button>
+                </div>
             )}
         </header>
     );
+    
 };
 
 export default Header;

@@ -1,0 +1,37 @@
+.dashboard_dreams_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  /* margin: 1rem auto; */
+}
+/* .dream_container {
+  font-size: medium;
+  color: black;
+} */
+.dashboard_heading {
+  text-align: center;
+}
+.dream {
+  background-color: #ccb8f0;
+  color: #ffffff;
+  padding: 1.6rem;
+  margin: 1rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+.dream_button_container {
+  display: flex;
+  justify-content: center;
+  gap: 11rem;
+}
+.dream_button {
+  background-color: #ec4899;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  border: none;
+  cursor: pointer;
+  margin: 1rem 0 1rem 0;
+}

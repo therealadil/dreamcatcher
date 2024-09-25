@@ -1,3 +1,8 @@
+/**
+ * The root layout component for the Dreamcatcher application.
+ * This component sets up the basic HTML structure, including the header, main content area, and footer.
+ * The `children` prop is used to render the main content of the application.
+ */
 import './globals.css';
 "use Client";
 

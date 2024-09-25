@@ -1,10 +1,9 @@
 @tailwind utilities;
 
+
 /* Custom styles */
-html, body {
-  height: 100%; /* Ensure html and body take up full height */
-  margin: 0;
-  padding: 0;
+
+body {
   background-color: black;
   color: white;
 }
@@ -14,25 +13,10 @@ body {
   flex-direction: column; /* Arrange children in a column */
 }
 
-
 footer {
   background-color: cyan;
 }
 
 main {
-  background-color: #612095;
-  flex: 1; /* Allow main to grow and fill available space */
-  display: flex;
-  flex-direction: column;
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-  body {
-    font-size: 14px; /* Adjust font size for smaller screens */
-  }
-
-  header, footer, main {
-    padding: 10px; /* Add padding for better spacing on mobile */
-  }
-}
+  background-color: indigo;
+} 

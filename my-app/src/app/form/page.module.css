@@ -1,0 +1,24 @@
+.page {
+  background-color: #612095;
+}
+
+.textwrapper {
+  margin:0px 10px 0px 5px;
+}
+
+.rounded {
+  border-radius: 10px;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.button {
+  background-color: #EC4899;
+  color: white;
+}
+
+.box {
+  background-color: #CCB8F0;
+}

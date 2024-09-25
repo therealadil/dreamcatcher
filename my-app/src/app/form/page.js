@@ -26,12 +26,12 @@ export default function FormPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    await fetchUser()
+    let thisUser = await fetchUser();
     //console.log(await supabase);
 
     const { error } = await supabase
     .from('dream_entries')
-    .insert({ user_id: userState.id, title: titleState, entry: textState, created_at: dateState })
+    .insert({ user_id: thisUser.id, title: titleState, entry: textState, created_at: dateState })
   }
 
   const fetchUser = async () => {
@@ -47,7 +47,7 @@ export default function FormPage() {
       }
 
       setUserState(userData);
-      console.log(userData);
+      return(userData);
     } catch (error) {
       console.error("Error fetching user and dream entries:", error.message);
     }

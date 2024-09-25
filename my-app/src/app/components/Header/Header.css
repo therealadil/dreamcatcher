@@ -6,6 +6,7 @@
     display: flex; /* Use flexbox for layout */
     justify-content: space-between; /* Space out the children */
     align-items: center; /* Center the children vertically */
+    color: white;
 }
 
 .header::after {

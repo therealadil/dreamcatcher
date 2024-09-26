@@ -10,7 +10,6 @@ export default function FormPage() {
   const [textState, setTextState] = useState('')
   const [dateState, setDateState] = useState('')
   const [titleState, setTitleState] = useState('')
-  const [userState, setUserState] = useState('')
 
 
   // Check if user is logged in, if they're not redirect to sign-in
@@ -50,12 +49,12 @@ export default function FormPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    let thisUser = await fetchUser();
+    let currentUser = await fetchUser();
     //console.log(await supabase);
 
     const { error } = await supabase
     .from('dream_entries')
-    .insert({ user_id: thisUser.id, title: titleState, entry: textState, created_at: dateState })
+    .insert({ user_id: currentUser.id, title: titleState, entry: textState, created_at: dateState })
     router.push('/dashboard');
   }
 

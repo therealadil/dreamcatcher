@@ -76,44 +76,44 @@ const Dashboard = () => {
 
   return (
     <>
-    <div className="space stars1"></div>
-    <div className="space stars2"></div>
-    <div className="space stars3"></div>
-    
-    <div>
-      <section className={styles.dashboard_dreams_container}>
-        <article>
-          <h2 className={styles.dashboard_heading}>Your Dreams</h2>
+      <div className="space stars1"></div>
+      <div className="space stars2"></div>
+      <div className="space stars3"></div>
 
-          {dreamEntries
-            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at in descending order
-            .map((entry) => (
-              <div key={entry.id} className={styles.dream}>
-                <p>{new Date(entry.created_at).toLocaleDateString()}</p>
-                <h2>{entry.title}</h2>
-                <p>{entry.entry}</p>
-                <button
-                  className={styles.dream_button}
-                  onClick={() => handleDeleteDream(entry.id)}
-                >
-                  Delete Dream
-                </button>
+      <div>
+        <section className={styles.dashboard_dreams_container}>
+          <article>
+            <h2 className={styles.dashboard_heading}>Your Dreams</h2>
+
+            {dreamEntries
+              .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at in descending order
+              .map((entry) => (
+                <div key={entry.id} className={styles.dream}>
+                  <p>{new Date(entry.created_at).toLocaleDateString()}</p>
+                  <h2>{entry.title}</h2>
+                  <p>{entry.entry}</p>
+                  <button
+                    className={styles.dream_button}
+                    onClick={() => handleDeleteDream(entry.id)}
+                  >
+                    Delete Dream
+                  </button>
+                </div>
+              ))}
+          </article>
+          <article>
+            {/* View More button centralized at the end, only shown if there are more than 3 entries */}
+            {dreamEntries.length > 3 && (
+              <div className={styles.viewMoreContainer}>
+                <button className={styles.dream_button}>View More</button>
               </div>
-            ))}
-        </article>
-        <article>
-          {/* View More button centralized at the end, only shown if there are more than 3 entries */}
-          {dreamEntries.length > 3 && (
-            <div className={styles.viewMoreContainer}>
-              <button className={styles.dream_button}>View More</button>
-            </div>
-          )}
-          <Link href="/form">
-            <button className={styles.fixedPlusButton}>+</button>
-          </Link>
-        </article>
-      </section>
-    </div>
+            )}
+            <Link href="/form">
+              <button className={styles.fixedPlusButton}>+</button>
+            </Link>
+          </article>
+        </section>
+      </div>
     </>
   );
 };

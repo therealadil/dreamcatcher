@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 10px 20px;
   background: linear-gradient(
     to right,
     #7724ba,
@@ -11,7 +11,7 @@
     #5623bd
   ); /* Subtle gradient from purple to a soft pink */
   color: white;
-  /* position: relative; */
+  position: relative;
 }
 
 .footer-text {

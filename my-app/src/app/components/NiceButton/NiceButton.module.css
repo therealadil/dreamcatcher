@@ -1,0 +1,9 @@
+.nice_button {
+  background-color: #ec4899;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  border: none;
+  cursor: pointer;
+  margin: 1rem 0; /* Adjusts margin for the button */
+}

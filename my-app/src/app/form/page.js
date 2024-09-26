@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../lib/supabaseClient';
 import styles from './page.module.css';
+import NiceButton from '../components/NiceButton/NiceButton';
 
 export default function FormPage() {
   const router = useRouter();
@@ -85,7 +86,7 @@ export default function FormPage() {
             type="text"
             id="dreamtitle"
             name="dreamtitle"
-            placeholder="Enter your dream here"
+            placeholder="Enter your dream title here"
             className={[
               styles.fullwidth,
               styles.rounded,
@@ -119,17 +120,11 @@ export default function FormPage() {
           />
         </div>
         <div>
-          <button
+          <NiceButton
             id="submitbutton"
             name="submitbutton"
-            className={[
-              styles.fullwidth,
-              styles.rounded,
-              styles.button,
-            ].join(' ')}
-          >
-            Submit
-          </button>
+            label="Submit"
+          />
         </div>
       </form>
     </div>

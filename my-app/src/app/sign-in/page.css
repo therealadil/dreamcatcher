@@ -51,7 +51,7 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
-  width: 90%;
+  width: 100%;
   max-width: 400px; /* Limit max width for better aesthetics */
   line-height: 1;
   position: relative; /* Required to keep the container above the overlay */

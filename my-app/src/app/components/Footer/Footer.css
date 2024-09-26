@@ -2,27 +2,44 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 20px 20px; /* Increased padding */
+  height: 50px; /* Added specific height */
   background: linear-gradient(
     to right,
     #7724ba,
     #7b2cbc,
     #6b1eaa,
     #5623bd
-  ); /* Subtle gradient from purple to a soft pink */
+  );
   color: white;
-  /* position: relative; */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .footer-text {
   margin: 0;
   text-align: center;
   flex-grow: 1;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .github-link {
-  color: #ec4899;
+  color: #ec4899 !important;
   font-size: 1.5rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.github-link:hover {
+  color: #f472b6 !important;
 }
 
 .footer::after {

@@ -1,60 +1,28 @@
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* Custom styles */
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  font-family: sans-serif;
+  font-weight: lighter;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */
-
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
 
 
 /* Custom styles */
-  /* body {
+html, body {
+  height: 100%; /* Ensure html and body take up full height */
+  margin: 0;
+  padding: 0;
   background-color: black;
   color: white;
+
 }
 
-header { 
-  background-color: magenta;
+body {
+  display: flex;
+  flex-direction: column; /* Arrange children in a column */
 }
+
 
 footer {
   background-color: cyan;
@@ -199,4 +167,19 @@ body {
       white, 
       rgba(255, 255, 255, 0)
     );
+  background-color: #612095;
+  flex: 1; /* Allow main to grow and fill available space */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  header, footer, main {
+    padding: 10px; /* Add padding for better spacing on mobile */
+  }
 }

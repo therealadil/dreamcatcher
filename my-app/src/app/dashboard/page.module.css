@@ -3,29 +3,35 @@
   flex-direction: column;
   align-items: center;
   padding: 0;
-  /* margin: 1rem auto; */
+  box-sizing: border-box; /* Ensure padding is included in width/height calculations */
+  background-image: url('https://snipboard.io/D2OGnx.jpg'); /* Background image */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image repeat */
+  flex: 1; /* This will make it grow to fill available space */
 }
-/* .dream_container {
-  font-size: medium;
-  color: black;
-} */
+
 .dashboard_heading {
   text-align: center;
 }
+
 .dream {
-  background-color: #ccb8f0;
+  background-color: #8f6bd4;
   color: #ffffff;
   padding: 1.6rem;
   margin: 1rem;
   border-radius: 0.6rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
 }
+
 .dream_button_container {
   display: flex;
-  justify-content: center;
-  gap: 11rem;
+  justify-content: center; /* Center the buttons */
+  gap: 11rem; /* Adjust as needed */
+  width: 100%; /* Ensures full width for centering */
+  margin: 1rem 0; /* Adds vertical space around the buttons */
 }
+
 .dream_button {
   background-color: #ec4899;
   color: #ffffff;
@@ -33,5 +39,29 @@
   border-radius: 0.6rem;
   border: none;
   cursor: pointer;
-  margin: 1rem 0 1rem 0;
+  margin: 1rem 0; /* Adjusts margin for the button */
+}
+
+.dream h2 {
+  font-weight: normal; /* Make the title bold */
+}
+
+
+/* Fixed button styles */
+.fixedPlusButton {
+  position: fixed; /* Fixes the button in place */
+  bottom: 80px; /* Adjust this value to move it higher or lower from the bottom */
+  right: 30px; /* Adjust this value to move it left or right */
+  background-color: #ec4899;
+  color: #ffffff;
+  width: 60px; /* Set a width */
+  height: 60px; /* Set a height */
+  border-radius: 50%; /* Makes it circular */
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  font-size: 42px; /* Adjusted font size for the plus sign */
+  line-height: 1; /* Ensures there's no extra space around the text */
+  padding-bottom: 9px; /* Reset padding to avoid additional space around the text */
+  padding-left: 7px;
 }

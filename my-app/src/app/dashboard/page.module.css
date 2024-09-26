@@ -8,7 +8,7 @@
   /* background-image: url("https://snipboard.io/D2OGnx.jpg"); Background image */
   /* background-size: cover; /* Cover the entire area */
   /* background-position: center; Center the image */
-  /* background-repeat: no-repeat; Prevent image repeat */ 
+  /* background-repeat: no-repeat; Prevent image repeat */
   /* flex: 1; This will make it grow to fill available space */
 }
 
@@ -66,3 +66,17 @@
   font-size: 42px;
   line-height: 1;
 }
+.dream_buttons_container {
+  display: flex;
+  /* justify-content: space-around; */
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+/* .delete_icon {
+  color: #ffffff;
+  background-color: ;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+} */

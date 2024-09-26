@@ -26,33 +26,13 @@
   margin: 2rem 0;
 }
 
-.rounded {
-  border-radius: 5px;
-}
-
-.fullwidth {
-  width: 100%;
-}
-
-.button {
-  background-color: #ec4899;
-  color: white;
-}
-
-.box {
-  background-color: #ccb8f0;
-}
-
-.margin_y {
-  margin: 5px 0px;
-}
-
-.margin_x {
-  margin: 0px 5px;
-}
-
 .button_bar {
   width: 100%;
   display: flex;
   justify-content: space-around;
+}
+
+.error_div {
+  text-align: center;
+  padding: 1rem;
 }

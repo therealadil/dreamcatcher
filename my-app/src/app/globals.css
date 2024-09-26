@@ -2,10 +2,10 @@
 
 /* Custom styles */
 
-* {
+/* * {
   font-family: sans-serif;
   font-weight: lighter;
-}
+} */
 
 
 /* Custom styles */
@@ -15,7 +15,13 @@ html, body {
   padding: 0;
   background-color: black;
   color: whitesmoke;
+  font-family: sans-serif;
+  font-weight: lighter;
+}
 
+.cursive {
+  font-family: 'Brush Script MT', cursive;
+  font-weight: 100;
 }
 
 body {

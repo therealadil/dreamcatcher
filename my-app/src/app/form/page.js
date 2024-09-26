@@ -125,7 +125,7 @@ export default function FormPage() {
             defaultValue={now}
           />
         </div>
-        <div>
+        <div className = {styles.button_bar}>
           <div>
             <NiceButton
               id="submitbutton"

@@ -30,3 +30,9 @@
 .margin_x {
   margin: 0px 5px;
 }
+
+.button_bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}

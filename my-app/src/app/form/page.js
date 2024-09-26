@@ -89,6 +89,7 @@ export default function FormPage() {
               styles.fullwidth,
               styles.rounded,
               styles.box,
+              styles.margin_y,
             ].join(' ')}
             onChange={handleTitleChange}
           />
@@ -102,6 +103,7 @@ export default function FormPage() {
               styles.fullwidth,
               styles.rounded,
               styles.box,
+              styles.margin_y,
             ].join(' ')}
             onChange={handleTextChange}
           />
@@ -113,23 +115,26 @@ export default function FormPage() {
               styles.fullwidth,
               styles.rounded,
               styles.box,
+              styles.margin_y,
             ].join(' ')}
             onChange={handleDateChange}
           />
         </div>
         <div>
-          <NiceButton
-            id="submitbutton"
-            name="submitbutton"
-            label="Back"
-            onClick={handleBackButton}
-          />
-          <NiceButton
-            id="submitbutton"
-            name="submitbutton"
-            label="Submit"
-            type="submit"
-          />
+          <div>
+            <NiceButton
+              id="submitbutton"
+              name="submitbutton"
+              label="Back"
+              onClick={handleBackButton}
+            />
+            <NiceButton
+              id="submitbutton"
+              name="submitbutton"
+              label="Submit"
+              type="submit"
+            />
+          </div>
         </div>
       </form>
     </div>

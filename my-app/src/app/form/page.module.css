@@ -22,3 +22,11 @@
 .box {
   background-color: #CCB8F0;
 }
+
+.margin_y {
+  margin: 5px 0px;
+}
+
+.margin_x {
+  margin: 0px 5px;
+}

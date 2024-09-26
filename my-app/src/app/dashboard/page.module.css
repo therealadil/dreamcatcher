@@ -4,7 +4,7 @@
   align-items: center;
   padding: 0;
   box-sizing: border-box; /* Ensure padding is included in width/height calculations */
-  background-image: url('https://snipboard.io/D2OGnx.jpg'); /* Background image */
+  background-image: url("https://snipboard.io/D2OGnx.jpg"); /* Background image */
   background-size: cover; /* Cover the entire area */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent image repeat */
@@ -17,7 +17,11 @@
 
 .dream {
   background-color: #8f6bd4;
+  backdrop-filter: blur(10rem);
   color: #ffffff;
+  /* opacity: 0.9; */
+  /* base-palette: black; */
+  /* color: #ffffff; */
   padding: 1.6rem;
   margin: 1rem;
   border-radius: 0.6rem;
@@ -26,6 +30,7 @@
 
 .dream_button_container {
   display: flex;
+  color: #ffffff;
   justify-content: center; /* Center the buttons */
   gap: 11rem; /* Adjust as needed */
   width: 100%; /* Ensures full width for centering */
@@ -45,23 +50,18 @@
 .dream h2 {
   font-weight: normal; /* Make the title bold */
 }
-
-
-/* Fixed button styles */
 .fixedPlusButton {
-  position: fixed; /* Fixes the button in place */
-  bottom: 80px; /* Adjust this value to move it higher or lower from the bottom */
-  right: 30px; /* Adjust this value to move it left or right */
+  position: fixed;
+  right: 30px;
+  bottom: 80px;
   background-color: #ec4899;
+  width: 3.5rem;
+  height: 3.5rem;
   color: #ffffff;
-  width: 60px; /* Set a width */
-  height: 60px; /* Set a height */
-  border-radius: 50%; /* Makes it circular */
+  border-radius: 50%;
   border: none;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
-  font-size: 42px; /* Adjusted font size for the plus sign */
-  line-height: 1; /* Ensures there's no extra space around the text */
-  padding-bottom: 9px; /* Reset padding to avoid additional space around the text */
-  padding-left: 7px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-size: 42px;
+  line-height: 1;
 }

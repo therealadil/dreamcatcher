@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import styles from "./page.module.css";
 import Link from "next/link";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 const Dashboard = () => {
   const [dreamEntries, setDreamEntries] = useState([]);
@@ -51,71 +52,64 @@ const Dashboard = () => {
     fetchUserAndDreamEntries();
   }, [router]);
 
+  const handleDeleteDream = async (dreamId) => {
+    try {
+      const { error } = await supabase
+        .from("dream_entries")
+        .delete()
+        .eq("id", dreamId);
+
+      if (error) {
+        console.error("Error deleting dream:", error.message);
+      } else {
+        // Remove the deleted dream from the state
+        setDreamEntries(dreamEntries.filter((dream) => dream.id !== dreamId));
+      }
+    } catch (error) {
+      console.error("Error deleting dream:", error.message);
+    }
+  };
+
   if (!user) {
     return <div>Loading...</div>;
   }
 
-// return (
-//   <div>
-//     <section className={styles.dashboard_dreams_container}>
-//       <article>
-//         <h2 className={styles.dashboard_heading}>Your Dreams</h2>
+  return (
+    <div>
+      <section className={styles.dashboard_dreams_container}>
+        <article>
+          <h2 className={styles.dashboard_heading}>Your Dreams</h2>
 
-//         {dreamEntries
-//           .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at in descending order
-//           .map((entry) => (
-//             <div key={entry.id} className={styles.dream}>
-//               <h2>{entry.title}</h2>
-//               <p>{entry.entry}</p>
-//               <p>Created at: {entry.created_at}</p>
-//             </div>
-//           ))}
-//       </article>
-//     </section>
-//     <section>
-//       <article className={styles.dream_button_container}>
-//         <Link href="/form">
-//           <button className={styles.dream_button}>+</button>
-//         </Link>
-//         <button className={styles.dream_button}>View More</button>
-//       </article>
-//     </section>
-//   </div>
-// );
-
-return (
-  <div>
-    <section className={styles.dashboard_dreams_container}>
-      <article>
-        <h2 className={styles.dashboard_heading}>Your Dreams</h2>
-
-        {dreamEntries
-          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at in descending order
-          .map((entry) => (
-            <div key={entry.id} className={styles.dream}>
-              <p>{new Date(entry.created_at).toLocaleDateString()}</p>
-              <h2>{entry.title}</h2>
-              <p>{entry.entry}</p>
+          {dreamEntries
+            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at in descending order
+            .map((entry) => (
+              <div key={entry.id} className={styles.dream}>
+                <p>{new Date(entry.created_at).toLocaleDateString()}</p>
+                <h2>{entry.title}</h2>
+                <p>{entry.entry}</p>
+                <button
+                  className={styles.dream_button}
+                  onClick={() => handleDeleteDream(entry.id)}
+                >
+                  Delete Dream
+                </button>
+              </div>
+            ))}
+        </article>
+        <article>
+          {/* View More button centralized at the end, only shown if there are more than 3 entries */}
+          {dreamEntries.length > 3 && (
+            <div className={styles.viewMoreContainer}>
+              <button className={styles.dream_button}>View More</button>
             </div>
-          ))}
-      </article>
-
-      {/* View More button centralized at the end, only shown if there are more than 3 entries */}
-      {dreamEntries.length > 3 && (
-        <div className={styles.viewMoreContainer}>
-          <button className={styles.dream_button}>View More</button>
-        </div>
-      )}
-    </section>
-
-    {/* Fixed button in bottom corner */}
-    <Link href="/form">
-      <button className={styles.fixedPlusButton}>+</button>
-    </Link>
-  </div>
-);
-
-
+          )}
+          <Link href="/form">
+            <button className={styles.fixedPlusButton}>+</button>
+          </Link>
+        </article>
+      </section>
+    </div>
+  );
 };
 
 export default Dashboard;

@@ -25,8 +25,6 @@ export default function FormPage() {
         router.replace("/sign-in"); // Redirect to sign-in if not authenticated
         return;
       }
-  
-      setUserState(userData); // Set the user state if authenticated
     };
   
     checkAuth();
@@ -36,6 +34,10 @@ export default function FormPage() {
 
   const handleTextChange = (event) => {
     setTextState(event.target.value);
+  }
+
+  const handleBackButton = (event) => {
+    router.push('/dashboard');
   }
 
   const handleDateChange = (event) => {
@@ -50,7 +52,6 @@ export default function FormPage() {
     event.preventDefault();
     
     let currentUser = await fetchUser();
-    //console.log(await supabase);
 
     const { error } = await supabase
     .from('dream_entries')
@@ -69,8 +70,6 @@ export default function FormPage() {
         console.error("Error fetching user data:", userError?.message);
         return;
       }
-
-      setUserState(userData);
       return(userData);
     } catch (error) {
       console.error("Error fetching user and dream entries:", error.message);
@@ -91,7 +90,7 @@ export default function FormPage() {
               styles.rounded,
               styles.box,
             ].join(' ')}
-            onChange = {handleTitleChange}
+            onChange={handleTitleChange}
           />
         </div>
         <div className={styles.textwrapper}>
@@ -104,7 +103,7 @@ export default function FormPage() {
               styles.rounded,
               styles.box,
             ].join(' ')}
-            onChange = {handleTextChange}
+            onChange={handleTextChange}
           />
         </div>
         <div className={styles.textwrapper}>
@@ -115,14 +114,21 @@ export default function FormPage() {
               styles.rounded,
               styles.box,
             ].join(' ')}
-            onChange = {handleDateChange}
+            onChange={handleDateChange}
           />
         </div>
         <div>
           <NiceButton
             id="submitbutton"
             name="submitbutton"
+            label="Back"
+            onClick={handleBackButton}
+          />
+          <NiceButton
+            id="submitbutton"
+            name="submitbutton"
             label="Submit"
+            type="submit"
           />
         </div>
       </form>

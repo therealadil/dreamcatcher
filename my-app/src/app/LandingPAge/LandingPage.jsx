@@ -10,8 +10,8 @@ export default function LandingPage() {
       <div className="space stars3"></div>
 
       <div className="LP">
-        <h1 className="title">Welcome to Dreamcatcher</h1>
-        <p className="tag">Capture your dreams and unlock their meanings.</p>
+        <h1 className="title">Welcome to DreamCatcher</h1>
+        <p className="tag cursive">Capture your dreams and unlock their meanings</p>
 
         <Image
           src="/assets/purpledm.png"

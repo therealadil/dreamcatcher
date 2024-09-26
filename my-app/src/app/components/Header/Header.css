@@ -2,11 +2,12 @@
     position: relative;
     width: 100%;
     padding: 20px;
-    background: linear-gradient(to right, #7724ba,  #8642b1, #7b2cbc, #9428ec); /* Subtle gradient from purple to a soft pink */
+    /* background: linear-gradient(to right, #7724ba,  #8642b1, #7b2cbc, #9428ec); Subtle gradient from purple to a soft pink */
+    background: linear-gradient(to bottom, rgba(119, 36, 186, 1), rgba(134, 66, 177, 0.60), rgba(123, 44, 188, 0.30), rgba(148, 40, 236, 0.01));
     display: flex;
     justify-content: center; /* Center the content */
     align-items: center;
-    color: white;
+    color: whitesmoke;
     box-sizing: border-box;
 }
 
@@ -23,7 +24,7 @@
     display: block;
     width: 100%;
     height: 1px;
-    background-color: #EC4899;
+    /* background-color: #EC4899; */
     position: absolute;
     bottom: 0;
     left: 0;

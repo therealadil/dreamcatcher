@@ -82,6 +82,11 @@ export default function FormPage() {
   };
 
   return(
+    <>
+    <div className="space stars1"></div>
+    <div className="space stars2"></div>
+    <div className="space stars3"></div>
+    
     <div className={styles.page}>
       <form onSubmit={handleSubmit}>
         <div className={styles.textwrapper}>
@@ -144,5 +149,6 @@ export default function FormPage() {
         </div>
       </form>
     </div>
+    </>
   )
 }

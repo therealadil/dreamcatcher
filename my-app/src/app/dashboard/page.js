@@ -75,6 +75,11 @@ const Dashboard = () => {
   }
 
   return (
+    <>
+    <div className="space stars1"></div>
+    <div className="space stars2"></div>
+    <div className="space stars3"></div>
+    
     <div>
       <section className={styles.dashboard_dreams_container}>
         <article>
@@ -109,6 +114,7 @@ const Dashboard = () => {
         </article>
       </section>
     </div>
+    </>
   );
 };
 

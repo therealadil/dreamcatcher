@@ -14,7 +14,7 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: black;
-  color: white;
+  color: whitesmoke;
 
 }
 
@@ -28,12 +28,10 @@ footer {
   background-color: cyan;
 }
 
-main {
-  /* background-color: indigo; */
-}
-
 
 body {
+  display: flex;
+  flex-direction: column; /* Arrange children in a column */
   background: radial-gradient(circle at bottom, navy 0, black 100%);
   height: 100vh;
   overflow: hidden;

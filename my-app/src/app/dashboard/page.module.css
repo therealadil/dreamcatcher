@@ -4,12 +4,7 @@
   align-items: center;
   padding: 0;
   margin-bottom: 40px;
-  box-sizing: border-box; /* Ensure padding is included in width/height calculations */
-  /* background-image: url("https://snipboard.io/D2OGnx.jpg"); Background image */
-  /* background-size: cover; /* Cover the entire area */
-  /* background-position: center; Center the image */
-  /* background-repeat: no-repeat; Prevent image repeat */
-  /* flex: 1; This will make it grow to fill available space */
+  box-sizing: border-box;
 }
 
 .dashboard_heading {
@@ -17,40 +12,69 @@
 }
 
 .dream {
-  background-color: #8f6bd4;
+  background-color: #603aa7;
   backdrop-filter: blur(10rem);
   color: #ffffff;
-  /* opacity: 0.9; */
-  /* base-palette: black; */
-  /* color: #ffffff; */
-  padding: 1.6rem;
+  padding: 1.2rem;
   margin: 1rem;
   border-radius: 0.6rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .dream_button_container {
   display: flex;
   color: #ffffff;
-  justify-content: center; /* Center the buttons */
-  gap: 11rem; /* Adjust as needed */
-  width: 100%; /* Ensures full width for centering */
-  margin: 1rem 0; /* Adds vertical space around the buttons */
+  justify-content: flex-end;
+  gap: 0.5rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
 }
 
 .dream_button {
-  background-color: #ec4899;
-  color: #ffffff;
-  padding: 1rem;
-  border-radius: 0.6rem;
+  background-color: transparent;
   border: none;
   cursor: pointer;
-  margin: 1rem 0; /* Adjusts margin for the button */
+  padding: 0;
 }
 
-.dream h2 {
-  font-weight: normal; /* Make the title bold */
+.dream_button img {
+  width: 24px;
+  height: 24px;
 }
+
+.aiButton {
+  background-color: #ec4899;
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
+  height: auto;
+  margin: 1rem 0 0 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  position: relative;
+  left: 0;
+}
+
+.aiButton:hover {
+  background-color: #d61f69;
+}
+
+.aiButton img {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+}
+
 .fixedPlusButton {
   position: fixed;
   right: 30px;
@@ -66,17 +90,101 @@
   font-size: 42px;
   line-height: 1;
 }
-.dream_buttons_container {
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(143, 107, 212, 0.9);
+  z-index: 1000;
   display: flex;
-  /* justify-content: space-around; */
-  gap: 2rem;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
 }
-/* .delete_icon {
-  color: #ffffff;
-  background-color: ;
+
+.overlayContent {
+  background-color: #6b4bc3;
+  padding: 40px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  color: white;
+  overflow-y: auto;
+}
+
+.dreamDetails {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.dreamDate {
+  font-size: 0.9rem;
+  color: #d1c4e9;
+}
+
+.dreamTitle {
   font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.dreamContent {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.aiDecoded {
+  width: 100%;
+  padding-top: 20px;
+  border-top: 1px solid #8e6bd4;
+  background-color: #4a2c7a; /* Darker background color for AI message */
+  padding: 15px; /* Adjust padding for better spacing */
+  margin-top: 0; /* Ensure no extra margin at the top */
+}
+
+.aiTitle {
+  font-size: 1.2rem;
+  color: #ec4899;
+  margin-bottom: 10px;
+  display: flex; /* Use flex to align icon and text */
+  align-items: center; /* Center align icon and text vertically */
+}
+
+.aiIcon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  margin-right: 0.5rem; /* Space between icon and text */
+}
+
+.aiMessage {
+  font-size: 1rem;
+  color: #f8e1ff;
+}
+
+.closeOverlayButton {
+  margin-top: 20px;
+  background-color: #ec4899;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: color 0.3s ease;
-} */
+  transition: background-color 0.3s;
+  align-self: center; /* Center align the close button */
+}
+
+.closeOverlayButton:hover {
+  background-color: #d61f69;
+}
+
+.viewMoreContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}

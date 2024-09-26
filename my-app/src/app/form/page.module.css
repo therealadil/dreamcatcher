@@ -31,3 +31,8 @@
   display: flex;
   justify-content: space-around;
 }
+
+.error_div {
+  text-align: center;
+  padding: 1rem;
+}

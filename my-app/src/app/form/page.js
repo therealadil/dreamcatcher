@@ -12,6 +12,7 @@ export default function FormPage() {
   const [titleState, setTitleState] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
   const [dreamId, setDreamId] = useState(null);
+  const [isValid, setIsValid] = useState(false);
 
   let now = new Date();
   now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
@@ -42,10 +43,10 @@ export default function FormPage() {
           .eq("id", id)
           .single();
         if (data) {
-          console.log(data);
           setTitleState(data.title);
           setTextState(data.entry);
           setDateState(data.created_at.toString().substring(0,16));
+          setIsValid(true);
         }
       }
     };
@@ -55,6 +56,8 @@ export default function FormPage() {
 
   const handleTextChange = (event) => {
     setTextState(event.target.value);
+    setIsValid((dateState.length > 0) && (event.target.value.length > 0) && (titleState.length > 0));
+    console.log(isValid);
   };
 
   const handleBackButton = (event) => {
@@ -63,31 +66,37 @@ export default function FormPage() {
 
   const handleDateChange = (event) => {
     setDateState(event.target.value);
+    setIsValid((event.target.value.length > 0) && (textState.length > 0) && (titleState.length > 0));
   };
 
   const handleTitleChange = (event) => {
     setTitleState(event.target.value);
+    setIsValid((dateState.length > 0) && (textState.length > 0) && (event.target.value.length > 0));
+    console.log(isValid);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    let currentUser = await fetchUser();
-    const dreamData = {
-      user_id: currentUser.id,
-      title: titleState,
-      entry: textState,
-      created_at: dateState,
-    };
+    if (isValid) {
 
-    const { error } = isUpdating
-      ? await supabase.from("dream_entries").update(dreamData).eq("id", dreamId)
-      : await supabase.from("dream_entries").insert(dreamData);
+      let currentUser = await fetchUser();
+      const dreamData = {
+        user_id: currentUser.id,
+        title: titleState,
+        entry: textState,
+        created_at: dateState,
+      };
 
-    if (error) {
-      console.error("Error saving dream:", error);
-    } else {
-      router.push("/dashboard");
+      const { error } = isUpdating
+        ? await supabase.from("dream_entries").update(dreamData).eq("id", dreamId)
+        : await supabase.from("dream_entries").insert(dreamData);
+
+      if (error) {
+        console.error("Error saving dream:", error);
+      } else {
+        router.push("/dashboard");
+      }
     }
   };
 
@@ -158,9 +167,12 @@ export default function FormPage() {
                 id="submitbutton"
                 name="submitbutton"
                 label={isUpdating ? "Update" : "Submit"}
-                type="submit"
+                type={"submit"}
               />
             </div>
+          </div>
+          <div className = {styles.error_div}>
+            <label>{isValid ? "" : "All fields must be completed"}</label>
           </div>
         </form>
       </div>

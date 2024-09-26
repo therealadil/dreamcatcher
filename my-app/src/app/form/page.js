@@ -42,9 +42,10 @@ export default function FormPage() {
           .eq("id", id)
           .single();
         if (data) {
+          console.log(data);
           setTitleState(data.title);
           setTextState(data.entry);
-          setDateState(data.created_at);
+          setDateState(data.created_at.toString().substring(0,16));
         }
       }
     };
@@ -129,6 +130,7 @@ export default function FormPage() {
               //   styles.margin_y,
               // ].join(" ")}
               onChange={handleTitleChange}
+              defaultValue={titleState}
             />
           </div>
           <div className={styles.textwrapper}>
@@ -145,6 +147,7 @@ export default function FormPage() {
               //   styles.margin_y,
               // ].join(" ")}
               onChange={handleTextChange}
+              defaultValue={textState}
             />
           </div>
           <div className={styles.textwrapper}>
@@ -158,7 +161,7 @@ export default function FormPage() {
               //   styles.margin_y,
               // ].join(" ")}
               onChange={handleDateChange}
-              defaultValue={now}
+              defaultValue={dateState}
             />
           </div>
           <div className={styles.button_bar}>

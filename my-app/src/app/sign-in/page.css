@@ -56,7 +56,10 @@
   line-height: 1;
   position: relative; /* Required to keep the container above the overlay */
   z-index: 2; /* Make sure the container is above the overlay */
+  border: 1px solid rgba(236, 72, 153, 0.5); /* Subtle faded outline */
 }
+
+
 
 .sign-in-container h1 {
   font-size: 1.5rem; /* Increased font size for the heading */

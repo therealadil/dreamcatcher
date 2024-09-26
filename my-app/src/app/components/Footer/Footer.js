@@ -6,7 +6,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'; // Import the Git
 const Footer = () => {
     return (
         <footer className="footer">
-            <p className="footer-text">Made by The Mad Hackers. © 2030</p>
+            <p className="footer-text">Made by The Mad Hackers. © 2024</p>
             <a 
                 href="https://github.com/SchoolOfCode/final-project-the-mad-hackers/" 
                 target="_blank" 

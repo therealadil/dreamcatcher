@@ -18,6 +18,7 @@ export default function FormPage() {
 
   // Check if user is logged in, if they're not redirect to sign-in
   useEffect(() => {
+    setDateState(now);  
     const checkAuth = async () => {
       const {
         data: { user: userData },

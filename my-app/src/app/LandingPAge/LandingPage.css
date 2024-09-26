@@ -1,6 +1,11 @@
-
-
-
+* {
+  /* background-color: #612095; */
+  color: whitesmoke;
+  font-family: sans-serif;
+  /* display: flex;
+  justify-content: center; */
+  font-weight: lighter;
+}
 
 .LP {
   display: flex;
@@ -8,6 +13,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  z-index: 10;
 }
 
 .tag {
@@ -23,5 +29,5 @@ button {
   cursor: pointer;
   text-align: center;
   display: inline-block;
+  z-index: 15;
 }
-

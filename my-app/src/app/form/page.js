@@ -3,13 +3,17 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../lib/supabaseClient';
 import styles from './page.module.css';
+import NiceButton from '../components/NiceButton/NiceButton';
 
 export default function FormPage() {
   const router = useRouter();
   const [textState, setTextState] = useState('')
   const [dateState, setDateState] = useState('')
   const [titleState, setTitleState] = useState('')
-  const [userState, setUserState] = useState('')
+
+  let now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  now = now.toISOString().slice(0,16);
 
 
   // Check if user is logged in, if they're not redirect to sign-in
@@ -25,8 +29,6 @@ export default function FormPage() {
         router.replace("/sign-in"); // Redirect to sign-in if not authenticated
         return;
       }
-  
-      setUserState(userData); // Set the user state if authenticated
     };
   
     checkAuth();
@@ -36,6 +38,10 @@ export default function FormPage() {
 
   const handleTextChange = (event) => {
     setTextState(event.target.value);
+  }
+
+  const handleBackButton = (event) => {
+    router.push('/dashboard');
   }
 
   const handleDateChange = (event) => {
@@ -49,12 +55,11 @@ export default function FormPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    let thisUser = await fetchUser();
-    //console.log(await supabase);
+    let currentUser = await fetchUser();
 
     const { error } = await supabase
     .from('dream_entries')
-    .insert({ user_id: thisUser.id, title: titleState, entry: textState, created_at: dateState })
+    .insert({ user_id: currentUser.id, title: titleState, entry: textState, created_at: dateState })
     router.push('/dashboard');
   }
 
@@ -69,8 +74,6 @@ export default function FormPage() {
         console.error("Error fetching user data:", userError?.message);
         return;
       }
-
-      setUserState(userData);
       return(userData);
     } catch (error) {
       console.error("Error fetching user and dream entries:", error.message);
@@ -85,13 +88,14 @@ export default function FormPage() {
             type="text"
             id="dreamtitle"
             name="dreamtitle"
-            placeholder="Enter your dream here"
+            placeholder="Enter your dream title here"
             className={[
               styles.fullwidth,
               styles.rounded,
               styles.box,
+              styles.margin_y,
             ].join(' ')}
-            onChange = {handleTitleChange}
+            onChange={handleTitleChange}
           />
         </div>
         <div className={styles.textwrapper}>
@@ -103,33 +107,39 @@ export default function FormPage() {
               styles.fullwidth,
               styles.rounded,
               styles.box,
+              styles.margin_y,
             ].join(' ')}
-            onChange = {handleTextChange}
+            onChange={handleTextChange}
           />
         </div>
         <div className={styles.textwrapper}>
           <input
-            type="date"
+            type="datetime-local"
             className={[
               styles.fullwidth,
               styles.rounded,
               styles.box,
+              styles.margin_y,
             ].join(' ')}
-            onChange = {handleDateChange}
+            onChange={handleDateChange}
+            defaultValue={now}
           />
         </div>
-        <div>
-          <button
-            id="submitbutton"
-            name="submitbutton"
-            className={[
-              styles.fullwidth,
-              styles.rounded,
-              styles.button,
-            ].join(' ')}
-          >
-            Submit
-          </button>
+        <div className = {styles.button_bar}>
+          <div>
+            <NiceButton
+              id="submitbutton"
+              name="submitbutton"
+              label="Back"
+              onClick={handleBackButton}
+            />
+            <NiceButton
+              id="submitbutton"
+              name="submitbutton"
+              label="Submit"
+              type="submit"
+            />
+          </div>
         </div>
       </form>
     </div>

@@ -123,12 +123,6 @@ export default function FormPage() {
               name="dreamtitle"
               placeholder="Enter your dream title here"
               className={styles.input_dream}
-              // className={[
-              //   styles.fullwidth,
-              //   styles.rounded,
-              //   styles.box,
-              //   styles.margin_y,
-              // ].join(" ")}
               onChange={handleTitleChange}
               defaultValue={titleState}
             />
@@ -140,12 +134,6 @@ export default function FormPage() {
               placeholder="Enter your dream here"
               rows="6"
               className={styles.textarea_dream}
-              // className={[
-              //   styles.fullwidth,
-              //   styles.rounded,
-              //   styles.box,
-              //   styles.margin_y,
-              // ].join(" ")}
               onChange={handleTextChange}
               defaultValue={textState}
             />
@@ -154,12 +142,6 @@ export default function FormPage() {
             <input
               type="datetime-local"
               className={styles.input_dream}
-              // className={[
-              //   styles.fullwidth,
-              //   styles.rounded,
-              //   styles.box,
-              //   styles.margin_y,
-              // ].join(" ")}
               onChange={handleDateChange}
               defaultValue={dateState}
             />

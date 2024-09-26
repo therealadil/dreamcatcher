@@ -29,7 +29,7 @@ footer {
 }
 
 main {
-  background-color: indigo;
+  /* background-color: indigo; */
 } */
 
 
@@ -167,7 +167,7 @@ body {
       white, 
       rgba(255, 255, 255, 0)
     );
-  background-color: #612095;
+  /* background-color: #612095; */
   flex: 1; /* Allow main to grow and fill available space */
   display: flex;
   flex-direction: column;

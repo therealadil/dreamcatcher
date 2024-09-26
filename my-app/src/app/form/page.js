@@ -1,3 +1,11 @@
+/**
+ * The FormPage component is the main entry point for the form functionality in the application.
+ * It handles user authentication, form state management, and the submission of new dream entries to the Supabase database.
+ *
+ * The component checks if the user is logged in, and redirects them to the sign-in page if they are not. It then manages the state of the form fields (text, date, and title) and handles the form submission process, which includes fetching the current user's data and inserting a new dream entry into the Supabase database.
+ *
+ * The component also includes some basic styling and layout using CSS modules.
+ */
 "use client";
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -14,7 +22,7 @@ export default function FormPage() {
   let now = new Date();
   now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
   now = now.toISOString().slice(0,16);
-
+  //Gets current time in ISO format (YYYY-MM-DDTHH:mm) and slices off the seconds
 
   // Check if user is logged in, if they're not redirect to sign-in
   useEffect(() => {

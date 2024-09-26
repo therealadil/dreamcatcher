@@ -20,10 +20,10 @@ export default function LandingPage() {
           height={400}
           loading="lazy"
         />
-       <Link href="/sign-in" passHref>
+      <Link href="/sign-in" passHref>
             <button>Get Started</button>
         </Link>
- 
+
       </div>
     </>
   );

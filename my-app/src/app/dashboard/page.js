@@ -18,6 +18,7 @@ const Dashboard = () => {
   const [user, setUser] = useState(null);
   const router = useRouter();
 
+  // Allows users to see their dreams only
   useEffect(() => {
     const fetchUserAndDreamEntries = async () => {
       try {
@@ -51,18 +52,18 @@ const Dashboard = () => {
 
     fetchUserAndDreamEntries();
   }, [router]);
-
+    // Remove the deleted dream from the state
   const handleDeleteDream = async (dreamId) => {
     try {
       const { error } = await supabase
         .from("dream_entries")
         .delete()
         .eq("id", dreamId);
-
+      
       if (error) {
         console.error("Error deleting dream:", error.message);
       } else {
-        // Remove the deleted dream from the state
+        
         setDreamEntries(dreamEntries.filter((dream) => dream.id !== dreamId));
       }
     } catch (error) {

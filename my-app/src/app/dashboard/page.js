@@ -1,3 +1,5 @@
+// File: src/app/dashboard/page.js
+
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -14,6 +16,7 @@ const Dashboard = () => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [selectedDream, setSelectedDream] = useState(null);
   const [aiExplanation, setAiExplanation] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchUserAndDreamEntries = async () => {
@@ -67,6 +70,7 @@ const Dashboard = () => {
   };
 
   const fetchAiExplanation = async (dreamText) => {
+    setIsLoading(true);
     try {
       const response = await fetch('/api/explain-dream', {
         method: 'POST',
@@ -74,10 +78,20 @@ const Dashboard = () => {
         body: JSON.stringify({ dreamText }),
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
       setAiExplanation(data.explanation);
     } catch (error) {
       console.error('Error explaining dream:', error);
+      setAiExplanation('Sorry, there was an error explaining your dream. Please try again later.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -172,7 +186,9 @@ const Dashboard = () => {
                   AI insights to your dream:
                 </h3>
                 <p className={styles.aiMessage}>
-                  {aiExplanation ? aiExplanation : 'Loading explanation...'}
+                  {isLoading 
+                    ? 'Loading explanation...' 
+                    : (aiExplanation || 'No explanation available. Please try again.')}
                 </p>
               </div>
               <button 
@@ -187,8 +203,6 @@ const Dashboard = () => {
       </div>
     </>
   );
-  
-
 };
 
 export default Dashboard;

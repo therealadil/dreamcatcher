@@ -11,6 +11,10 @@ export default function FormPage() {
   const [dateState, setDateState] = useState('')
   const [titleState, setTitleState] = useState('')
 
+  let now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  now = now.toISOString().slice(0,16);
+
 
   // Check if user is logged in, if they're not redirect to sign-in
   useEffect(() => {
@@ -110,7 +114,7 @@ export default function FormPage() {
         </div>
         <div className={styles.textwrapper}>
           <input
-            type="date"
+            type="datetime-local"
             className={[
               styles.fullwidth,
               styles.rounded,
@@ -118,6 +122,7 @@ export default function FormPage() {
               styles.margin_y,
             ].join(' ')}
             onChange={handleDateChange}
+            defaultValue={now}
           />
         </div>
         <div>

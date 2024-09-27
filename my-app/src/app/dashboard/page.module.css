@@ -45,7 +45,7 @@
   border-radius: 0.6rem;
   border: none;
   cursor: pointer;
-  margin: 1rem 0; /* Adjusts margin for the button */
+  margin: 1rem; /* Adjusts margin for the button */
 }
 
 .dream h2 {

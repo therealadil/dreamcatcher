@@ -1,0 +1,19 @@
+- 1 minute for introductions
+- problem statement
+- solution outline
+- demo
+  - test?
+- code highlight
+  - screenshots of code
+  - supabase
+- planning
+  - vercel
+  - tech stack
+  - supabase
+  - MVPs
+- roadmap
+  - screenshot of the AI code
+  - audio recording
+  - mood tagging with graphs
+    - wireframe for graphs
+- retro

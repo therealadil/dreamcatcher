@@ -1,3 +1,8 @@
+/**
+ * The `SignIn` component is responsible for rendering the sign-in page for the DreamCatcher application.
+ * It checks if the user is already signed in, and if so, redirects them to the dashboard. Otherwise, it
+ * renders a button that allows the user to sign in with their Google account.
+ */
 "use client"
 
 import { useState, useEffect } from 'react';

@@ -2,7 +2,7 @@
 
 DreamCatcher is a web application that allows users to capture, interpret, and explore their dreams. Built with Next.js and Supabase, it provides a seamless experience for dream journaling and analysis.
 
-🌐 **[Visit DreamCatcher](https://dreamcatcher.vercel.app)** (Replace with your actual live website URL)
+🌐 **[Visit DreamCatcher](https://final-project-the-mad-hackers.vercel.app/)**
 
 ## ✨ Features
 

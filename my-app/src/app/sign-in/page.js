@@ -15,7 +15,7 @@ useEffect(() => {
     const { data: { user } } = await supabase.auth.getUser();
     setUser(user);
     if (user) {
-        router.replace('/dashboard');
+        window.location.href = "/dashboard"
     }
     };
     checkUser();

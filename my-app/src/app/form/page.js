@@ -66,7 +66,6 @@ export default function FormPage() {
   const handleTextChange = (event) => {
     setTextState(event.target.value);
     setIsValid((dateState.length > 0) && (event.target.value.length > 0) && (titleState.length > 0));
-    console.log(isValid);
   };
 
   const handleBackButton = (event) => {
@@ -81,7 +80,6 @@ export default function FormPage() {
   const handleTitleChange = (event) => {
     setTitleState(event.target.value);
     setIsValid((dateState.length > 0) && (textState.length > 0) && (event.target.value.length > 0));
-    console.log(isValid);
   };
 
   const handleSubmit = async (event) => {

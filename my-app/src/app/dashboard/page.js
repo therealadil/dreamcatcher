@@ -1,10 +1,5 @@
-/**
- * The Dashboard component is the main page for the application's dashboard functionality.
- * It fetches the current user's data and their dream entries from the Supabase database,
- * and displays the dream entries on the page.
- *
- * @returns {JSX.Element} The rendered Dashboard component.
- */
+// File: src/app/dashboard/page.js
+
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -18,6 +13,10 @@ const Dashboard = () => {
   const [user, setUser] = useState(null);
   const router = useRouter();
   const [showAllDreams, setShowAllDreams] = useState(false);
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [selectedDream, setSelectedDream] = useState(null);
+  const [aiExplanation, setAiExplanation] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchUserAndDreamEntries = async () => {
@@ -63,36 +62,50 @@ const Dashboard = () => {
       if (error) {
         console.error("Error deleting dream:", error.message);
       } else {
-        // Remove the deleted dream from the state
         setDreamEntries(dreamEntries.filter((dream) => dream.id !== dreamId));
       }
     } catch (error) {
       console.error("Error deleting dream:", error.message);
     }
   };
-  // const handleUpdateDream = async (dreamId, updatedDream) => {
-  //   try {
-  //     const { error } = await supabase
-  //       .from("dream_entries")
-  //       .update(updatedDream)
-  //       .eq("id", dreamId);
 
-  //     console.log(updatedDream);
+  const fetchAiExplanation = async (dreamText) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/explain-dream', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dreamText }),
+      });
 
-  //     if (error) {
-  //       console.error("Error updating dream:", error.message);
-  //     } else {
-  //       // Update the dream in the state
-  //       setDreamEntries(
-  //         dreamEntries.map((dream) =>
-  //           dream.id === dreamId ? { ...dream, ...updatedDream } : dream
-  //         )
-  //       );
-  //     }
-  //   } catch (error) {
-  //     console.error("Error updating dream:", error.message);
-  //   }
-  // };
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+      setAiExplanation(data.explanation);
+    } catch (error) {
+      console.error('Error explaining dream:', error);
+      setAiExplanation('Sorry, there was an error explaining your dream. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleAiClick = (dream) => {
+    setSelectedDream(dream);
+    setIsOverlayOpen(true);
+    fetchAiExplanation(dream.entry);
+  };
+
+  const closeOverlay = () => {
+    setIsOverlayOpen(false);
+    setSelectedDream(null);
+    setAiExplanation('');
+  };
 
   if (!user) {
     return <div>Loading...</div>;
@@ -103,58 +116,43 @@ const Dashboard = () => {
       <div className="space stars1"></div>
       <div className="space stars2"></div>
       <div className="space stars3"></div>
-
+  
       <div>
         <section className={styles.dashboard_dreams_container}>
           <article>
             <h2 className={styles.dashboard_heading}>Your Dreams</h2>
-
+  
             {(showAllDreams ? dreamEntries : dreamEntries.slice(0, 3))
-              .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at in descending order
+              .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
               .map((entry) => (
                 <div key={entry.id} className={styles.dream}>
                   <p>{new Date(entry.created_at).toLocaleDateString()}</p>
                   <h2>{entry.title}</h2>
                   <p>{entry.entry}</p>
-                  <div className={styles.dream_buttons_container}>
+                  <button
+                    className={styles.aiButton}
+                    onClick={() => handleAiClick(entry)}
+                  >
+                    <img src="https://img.icons8.com/?size=100&id=61864&format=png&color=000000" alt="AI Brain" />
+                    Decode with AI
+                  </button>
+                  <div className={styles.dream_button_container}>
+                    <Link href={`/form?id=${entry.id}`}>
+                      <button className={styles.dream_button}>
+                        <img src="https://img.icons8.com/?size=100&id=49&format=png&color=000000" alt="Edit" />
+                      </button>
+                    </Link>
                     <button
                       className={styles.dream_button}
                       onClick={() => handleDeleteDream(entry.id)}
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        height="24"
-                      >
-                        <path
-                          fill="white"
-                          d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"
-                        />
-                      </svg>
+                      <img src="https://img.icons8.com/?size=100&id=99933&format=png&color=000000" alt="Delete" />
                     </button>
-
-                    <Link href={`/form?id=${entry.id}`}>
-                      <button className={styles.dream_button}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          width="24"
-                          height="24"
-                        >
-                          <path
-                            fill="white"
-                            d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zm-2.218 5.93l-3.712-3.712-12.15 12.15v3.712h3.712l12.15-12.15zM5.25 20.25h-3.75v-3.75l11.25-11.25 3.75 3.75-11.25 11.25z"
-                          />
-                        </svg>
-                      </button>
-                    </Link>
                   </div>
                 </div>
               ))}
           </article>
           <article>
-            {/* View More button centralized at the end, only shown if there are more than 3 entries */}
             {dreamEntries.length > 3 && (
               <div className={styles.viewMoreContainer}>
                 <button
@@ -170,26 +168,38 @@ const Dashboard = () => {
             </Link>
           </article>
         </section>
-        <section>
-          <article>
-            {/* <Link href={`/form?id=${entry.id}`}>
-              <button className={styles.dream_button}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                >
-                  <path
-                    fill="white"
-                    d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zm-2.218 5.93l-3.712-3.712-12.15 12.15v3.712h3.712l12.15-12.15zM5.25 20.25h-3.75v-3.75l11.25-11.25 3.75 3.75-11.25 11.25z"
-                  />
-                </svg>
-                Update
+  
+        {/* AI Explanation Overlay */}
+        {isOverlayOpen && selectedDream && (
+          <div className={styles.overlay}>
+            <div className={styles.overlayContent}>
+              <div className={styles.dreamDetails}>
+                <p className={styles.dreamDate}>
+                  {new Date(selectedDream.created_at).toLocaleDateString()}
+                </p>
+                <h2 className={styles.dreamTitle}>{selectedDream.title}</h2>
+                <p className={styles.dreamContent}>{selectedDream.entry}</p>
+              </div>
+              <div className={styles.aiDecoded}>
+                <h3 className={styles.aiTitle}>
+                  <img src="https://img.icons8.com/?size=100&id=61864&format=png&color=ffffff" alt="AI Brain" className={styles.aiIcon} />
+                  AI insights to your dream:
+                </h3>
+                <p className={styles.aiMessage}>
+                  {isLoading 
+                    ? 'Loading explanation...' 
+                    : (aiExplanation || 'No explanation available. Please try again.')}
+                </p>
+              </div>
+              <button 
+                className={styles.closeOverlayButton} 
+                onClick={closeOverlay}
+              >
+                Close
               </button>
-            </Link> */}
-          </article>
-        </section>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

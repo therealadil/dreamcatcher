@@ -52,29 +52,12 @@
   border-radius: 2rem;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: fit-content;
-  height: auto;
-  margin: 1rem 0 0 0;
-  font-size: 0.9rem;
-  font-weight: bold;
-  position: relative;
-  left: 0;
+  margin: 1rem; /* Adjusts margin for the button */
 }
 
-.aiButton:hover {
-  background-color: #d61f69;
+.dream h2 {
+  font-weight: normal; /* Make the title bold */
 }
-
-.aiButton img {
-  width: 24px;
-  height: 24px;
-  margin-right: 0.5rem;
-}
-
 .fixedPlusButton {
   position: fixed;
   right: 30px;

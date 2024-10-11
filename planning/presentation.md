@@ -1,0 +1,34 @@
+- 1 minute for introductions
+- problem statement - Adil
+- solution outline - Adil
+- demo
+  - landing page / styling - Habib
+  - sign in - Adil
+  - dashboard - Kiran
+  - form - Jocelyne
+  - test - Daniel
+- code highlight
+  - test - Daniel
+  - animation - Habib
+  - nice button - Jocelyne
+  - supabase CRUD - Kiran
+  - (screenshots of code)
+  - (supabase)
+- planning
+  - (figma board)
+  - (wireframes)
+  - Supabase - Kiran (screenshots)
+    - postgres - abstracted
+  - vercel - Jocelyne
+  - things we didn't use - Adil
+    - ts
+    - docker
+    - Amazon
+  - MVPs - Habib
+- roadmap
+  - screenshot of the AI code - Adil
+  - audio recording - Daniel
+  - mood tagging with graphs - Daniel
+    - wireframe for graphs - Kiran
+- retro - Daniel
+- THANKYOU

@@ -1,10 +1,7 @@
-* {
+body {
   color: whitesmoke;
   font-family: sans-serif;
   font-weight: lighter;
-}
-
-body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -25,12 +22,7 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index: 10;
   padding: 20px;
-}
-
-.tag {
-  font-size: 18px;
 }
 
 button {
@@ -42,5 +34,5 @@ button {
   cursor: pointer;
   text-align: center;
   display: inline-block;
-  z-index: 15;
+  margin-top: 20px;
 }

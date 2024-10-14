@@ -51,3 +51,5 @@ We welcome contributions! Please refer to our [contributing guidelines](CONTRIBU
 - 🎉 Next.js team for the excellent framework
 - 🚀 Supabase for providing a powerful backend-as-a-service
 - 💪 The Mad Hackers team for their dedication and creativity
+
+.

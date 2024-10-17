@@ -8,7 +8,7 @@ import Footer from './components/Footer/Footer'; // Correct path to import Heade
 
 
 export const metadata = {
-  title: "Dreamcatcher",
+  title: "DreamCatcher",
   description: "Capture and interpret your dreams.",
 };
 

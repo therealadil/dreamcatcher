@@ -135,7 +135,7 @@ const Dashboard = () => {
                     className={styles.aiButton}
                     onClick={() => handleAiClick(entry)}
                   >
-                    <img src="https://img.icons8.com/?size=100&id=61864&format=png&color=000000" alt="AI Brain" />
+                    <img src="https://img.icons8.com/?size=30&id=61864&format=png&color=000000" alt="AI Brain" />
                     Decode with AI
                   </button>
                   <div className={styles.dream_button_container}>

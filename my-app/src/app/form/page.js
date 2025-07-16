@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import styles from "./page.module.css";
-import NiceButton from "../components/NiceButton/NiceButton";
 
 export default function FormPage() {
   const router = useRouter();
@@ -69,6 +68,7 @@ export default function FormPage() {
   };
 
   const handleBackButton = (event) => {
+    event.preventDefault();
     router.push("/dashboard");
   };
 
@@ -99,9 +99,7 @@ export default function FormPage() {
         ? await supabase.from("dream_entries").update(dreamData).eq("id", dreamId)
         : await supabase.from("dream_entries").insert(dreamData);
 
-      if (error) {
-        console.error("Error saving dream:", error);
-      } else {
+      if (!error) {
         router.push("/dashboard");
       }
     }
@@ -125,64 +123,74 @@ export default function FormPage() {
   };
 
   return (
-    <>
-      <div className="space stars1"></div>
-      <div className="space stars2"></div>
-      <div className="space stars3"></div>
+    <div className={styles.formPageContainer}>
+      {/* Animated stars background */}
+      <div className={styles.starsContainer}>
+        <div className={styles.stars1}></div>
+        <div className={styles.stars2}></div>
+        <div className={styles.stars3}></div>
+      </div>
 
-      <div className={styles.page}>
-        <form onSubmit={handleSubmit}>
-          <div className={styles.textwrapper}>
-            <input
-              type="text"
-              id="dreamtitle"
-              name="dreamtitle"
-              placeholder="Enter your dream title here"
-              className={styles.input_dream}
-              onChange={handleTitleChange}
-              defaultValue={titleState}
-            />
+      <section className={styles.formSection}>
+        <div className={styles.formContent}>
+          <div className={styles.moonContainer}>
+            <span className={styles.moon} role="img" aria-label="moon">🌙</span>
           </div>
-          <div className={styles.textwrapper}>
-            <textarea
-              id="dreamtext"
-              name="dreamtext"
-              placeholder="Enter your dream here"
-              rows="6"
-              className={styles.textarea_dream}
-              onChange={handleTextChange}
-              defaultValue={textState}
-            />
-          </div>
-          <div className={styles.textwrapper}>
-            <input
-              type="datetime-local"
-              className={styles.input_dream}
-              onChange={handleDateChange}
-              defaultValue={dateState}
-            />
-          </div>
-          <div className={styles.button_bar}>
-            <div>
-              <NiceButton
-                id="submitbutton"
-                name="submitbutton"
-                label="Back"
-                onClick={handleBackButton}
-              />
-              <NiceButton
-                id="submitbutton"
-                name="submitbutton"
-                label={isUpdating ? "Update" : "Submit"}
-                type={"submit"}
+          <h1 className={styles.formTitle}>
+            {isUpdating ? 'Update Your Dream' : 'Record Your Dream'}
+          </h1>
+          <p className={styles.formSubtitle}>
+            {isUpdating ? 'Make changes to your dream entry' : 'Capture the details of your dream journey'}
+          </p>
+          
+          <form onSubmit={handleSubmit} className={styles.dreamForm}>
+            <div className={styles.inputGroup}>
+              <input
+                type="text"
+                placeholder="Enter your dream title here"
+                onChange={handleTitleChange}
+                value={titleState}
+                className={styles.dreamInput}
+                required
               />
             </div>
-          </div>
-          <div className = {styles.error_div}>
-            <label>{isValid ? "" : "All fields must be completed"}</label>
-          </div>
-        </form>
-      </div>
-    </>
+            
+            <div className={styles.inputGroup}>
+              <textarea
+                placeholder="Enter your dream here"
+                rows="6"
+                onChange={handleTextChange}
+                value={textState}
+                className={styles.dreamTextarea}
+                required
+              />
+            </div>
+            
+            <div className={styles.inputGroup}>
+              <input
+                type="datetime-local"
+                onChange={handleDateChange}
+                value={dateState}
+                className={styles.dreamInput}
+                required
+              />
+            </div>
+            
+            <div className={styles.validationMessage}>
+              {!isValid && <span className={styles.errorMessage}>All fields must be completed</span>}
+            </div>
+            
+            <div className={styles.buttonGroup}>
+              <button type="button" onClick={handleBackButton} className={styles.backButton}>
+                Back
+              </button>
+              <button type="submit" className={styles.submitButton} disabled={!isValid}>
+                {isUpdating ? "Update Dream" : "Save Dream"}
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
   );
 }

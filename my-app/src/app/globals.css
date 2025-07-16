@@ -1,159 +1,106 @@
-/* @tailwind utilities; */
-
-/* Custom styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 * {
-  font-family: sans-serif;
-  font-weight: lighter;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-
 
 html,
 body {
   height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  color: whitesmoke;
-  font-family: sans-serif;
-  font-weight: lighter;
-  overflow-y: auto;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  background: linear-gradient(180deg, #0f0c18 0%, #1a1a2e 50%, #2d1b3d 100%);
+  color: #f5f5f5;
+  overflow-x: hidden;
 }
 
-/* Hide scrollbar for all browsers */
-body::-webkit-scrollbar, html::-webkit-scrollbar {
+/* Hide scrollbar but keep functionality */
+body::-webkit-scrollbar {
   display: none;
 }
 
-.cursive {
-  font-family: 'Brush Script MT', cursive;
-  font-weight: 100;
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-body {
+#__next {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(circle at bottom, navy 0, black 100%);
-  min-height: 100vh;
-  position: relative;
-  overflow-y: auto;
 }
 
-header {
-  /* Remove background-color and z-index so .header class takes precedence */
-  padding: 20px;
-}
-
-footer {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  padding: 10px 0;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.space, .stars1, .stars2, .stars3 {
+/* Animated stars background */
+.stars-container {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   pointer-events: none;
 }
 
-.space {
-  background: rgba(40, 10, 50, 0.25) center / 200px 200px round;
-  filter: brightness(0.7);
-}
-
-@keyframes space {
-  40% { opacity: 0.75; }
-  50% { opacity: 0.25; }
-  60% { opacity: 0.75; }
-  100% { transform: rotate(360deg); }
+.stars1, .stars2, .stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
 }
 
 .stars1 {
-  animation: space 180s ease-in-out infinite;
-  transform: rotate(17deg);
-  opacity: 0.85;
-  background-image: radial-gradient(1px 1px at 25px 5px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(1px 1px at 50px 25px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(1px 1px at 125px 20px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(1.5px 1.5px at 50px 75px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(2px 2px at 15px 125px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(2.5px 2.5px at 110px 80px, white, rgba(255, 255, 255, 0));
+  animation: twinkle 4s ease-in-out infinite;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, white, transparent),
+    radial-gradient(1px 1px at 40px 70px, white, transparent),
+    radial-gradient(1px 1px at 90px 40px, white, transparent),
+    radial-gradient(1px 1px at 130px 80px, white, transparent),
+    radial-gradient(1px 1px at 160px 30px, white, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
 }
 
 .stars2 {
-  animation: space 240s ease-in-out infinite;
-  transform: rotate(-23deg);
-  opacity: 0.7;
-  background-image: radial-gradient(1px 1px at 75px 125px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(1px 1px at 100px 75px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(1.5px 1.5px at 199px 100px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(2px 2px at 20px 50px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(2.5px 2.5px at 100px 5px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(2.5px 2.5px at 5px 5px, white, rgba(255, 255, 255, 0));
+  animation: twinkle 6s ease-in-out infinite reverse;
+  background-image: 
+    radial-gradient(1px 1px at 60px 20px, white, transparent),
+    radial-gradient(1px 1px at 100px 60px, white, transparent),
+    radial-gradient(1px 1px at 140px 90px, white, transparent),
+    radial-gradient(1px 1px at 180px 10px, white, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
 }
 
 .stars3 {
-  animation: space 300s ease-in-out infinite;
-  transform: rotate(41deg);
-  opacity: 0.6;
-  background-image: radial-gradient(1px 1px at 10px 10px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(1px 1px at 150px 150px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(1.5px 1.5px at 60px 170px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(1.5px 1.5px at 175px 180px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(2px 2px at 195px 95px, white, rgba(255, 255, 255, 0)),
-    radial-gradient(2.5px 2.5px at 95px 145px, white, rgba(255, 255, 255, 0));
+  animation: twinkle 8s ease-in-out infinite;
+  background-image: 
+    radial-gradient(1px 1px at 30px 90px, white, transparent),
+    radial-gradient(1px 1px at 80px 50px, white, transparent),
+    radial-gradient(1px 1px at 120px 20px, white, transparent),
+    radial-gradient(1px 1px at 170px 70px, white, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
 }
 
 main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  padding: 20px;
-  overflow-y: auto;
-  position: relative;
-  z-index: 5;
+  min-height: calc(100vh - 120px); /* Account for header/footer */
 }
 
-/* Responsive design */
+/* Mobile-first responsive design */
 @media (max-width: 600px) {
-  body {
-    font-size: 14px;
-  }
-
-  header,
-  footer,
   main {
-    padding: 10px;
+    min-height: calc(100vh - 100px);
   }
-}
-
-/* Ensure GitHub icon is visible */
-footer img {
-  max-width: 100%;
-  height: auto;
-}
-
-footer, header {
-  background: transparent !important;
-  position: relative !important;
-}
-
-.header {
-  z-index: 100 !important;
-  position: relative !important;
-}
-
-.footer, .footer-extra-padding {
-  z-index: 10 !important;
-  position: relative !important;
-  margin-bottom: 16px !important;
-  padding-bottom: 12px !important;
 }

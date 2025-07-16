@@ -24,22 +24,24 @@
 }
 
 .logout-btn {
-  background-color: #ec4899;
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 1.05rem;
   cursor: pointer;
-  font-weight: 400;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+  transition: all 0.3s ease;
+  outline: none;
 }
-
 .logout-btn:hover {
-  background-color: #be185d;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(236, 72, 153, 0.4);
 }
-
 .logout-btn:active {
-  transform: scale(0.98);
+  transform: translateY(0);
 }
 
 @media (max-width: 600px) {

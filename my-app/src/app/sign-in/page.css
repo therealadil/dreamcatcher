@@ -102,3 +102,38 @@
   height: 20px;
   margin-right: 0.5rem;
 }
+
+.email-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.email-auth-input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 7px;
+  border: 1px solid #c084fc;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 0;
+  outline: none;
+  transition: border 0.2s;
+}
+.email-auth-input:focus {
+  border: 1.5px solid #ec4899;
+  background: rgba(255,255,255,0.13);
+}
+
+.toggle-auth-mode {
+  background: none;
+  border: none;
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin-top: 8px;
+  margin-bottom: 0;
+  padding: 0;
+}

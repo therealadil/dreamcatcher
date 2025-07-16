@@ -14,7 +14,7 @@ export default function LandingPage() {
 
 
       <h1>🌙</h1>
-      <h1>DreamCatcher</h1>
+      <h1>DreamCatcher test</h1>
       <h3>AI-powered dreams</h3>
       <p>Unlock the power of your subconcsious mind. Record, analyse, and explore your dreams with AI insights.</p>
         

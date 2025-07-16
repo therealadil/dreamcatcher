@@ -96,6 +96,88 @@ export default function Dashboard() {
         <h1 className="hero-title" style={{fontSize: '2.2rem', marginBottom: 8}}>Your Dream Journal</h1>
         <p className="hero-subtitle" style={{fontSize: '1.05rem', marginBottom: 32}}>View, reflect, and decode your dreams with AI-powered insights</p>
       </div>
+      {/* Toolbar with search, filter, calendar, sort */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 16,
+        margin: '0 auto 32px auto',
+        maxWidth: 700,
+        flexWrap: 'wrap',
+        padding: '0 12px'
+      }}>
+        <input
+          type="text"
+          placeholder="Search dreams..."
+          style={{
+            padding: '10px 16px',
+            borderRadius: 24,
+            border: '1px solid #c084fc',
+            background: 'rgba(255,255,255,0.07)',
+            color: '#fff',
+            fontSize: '1rem',
+            outline: 'none',
+            minWidth: 180
+          }}
+          onChange={() => {}}
+        />
+        <select
+          style={{
+            padding: '10px 16px',
+            borderRadius: 24,
+            border: '1px solid #a78bfa',
+            background: 'rgba(139,92,246,0.08)',
+            color: '#fff',
+            fontSize: '1rem',
+            outline: 'none',
+            minWidth: 120
+          }}
+          onChange={() => {}}
+        >
+          <option>All</option>
+          <option>Recent</option>
+          <option>Oldest</option>
+          <option>With AI Insights</option>
+        </select>
+        <button
+          style={{
+            background: 'none',
+            border: 'none',
+            borderRadius: '50%',
+            width: 44,
+            height: 44,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            transition: 'background 0.2s',
+            color: '#a78bfa',
+            fontSize: 24
+          }}
+          title="Calendar (coming soon)"
+          onClick={() => {}}
+        >
+          <span role="img" aria-label="calendar">📅</span>
+        </button>
+        <select
+          style={{
+            padding: '10px 16px',
+            borderRadius: 24,
+            border: '1px solid #a78bfa',
+            background: 'rgba(139,92,246,0.08)',
+            color: '#fff',
+            fontSize: '1rem',
+            outline: 'none',
+            minWidth: 120
+          }}
+          onChange={() => {}}
+        >
+          <option>Sort: Newest</option>
+          <option>Sort: Oldest</option>
+          <option>Sort: Title A-Z</option>
+        </select>
+      </div>
       <section className="features-section" style={{marginTop: 0}}>
         <div className="features-grid">
           {dreamEntries.length === 0 && (

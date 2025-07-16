@@ -1,173 +1,47 @@
-.dashboard_dreams_container {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 0;
-  margin-bottom: 40px;
-  box-sizing: border-box;
-}
-
-.dashboard_heading {
-  text-align: center;
-}
-
-.dream {
-  background-color: #603aa7;
-  backdrop-filter: blur(10rem);
-  color: #ffffff;
-  padding: 1.2rem;
-  margin: 1rem;
-  border-radius: 0.6rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.dashboard-page {
   position: relative;
-}
-
-.dream_button_container {
-  display: flex;
-  color: #ffffff;
-  justify-content: flex-end;
-  gap: 0.5rem;
   width: 100%;
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
+  min-height: 100vh;
 }
 
-.dream_button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.dream_button img {
-  width: 24px;
-  height: 24px;
-}
-
-.aiButton {
-  background-color: #ec4899;
-  color: #ffffff;
-  padding: 0.6rem 1rem;
-  border-radius: 2rem;
-  border: none;
-  cursor: pointer;
-  margin: 1rem; /* Adjusts margin for the button */
-}
-
-.dream h2 {
-  font-weight: normal; /* Make the title bold */
-}
-.fixedPlusButton {
-  position: fixed;
-  right: 30px;
-  bottom: 80px;
-  background-color: #ec4899;
-  width: 3.5rem;
-  height: 3.5rem;
-  color: #ffffff;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  font-size: 42px;
-  line-height: 1;
-}
-
+/* Overlay styles for AI explanation */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(143, 107, 212, 0.9);
-  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(139, 92, 246, 0.15);
+  z-index: 1100;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .overlayContent {
-  background-color: #6b4bc3;
-  padding: 40px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 800px;
-  max-height: 80vh;
+  background: rgba(44, 22, 80, 0.98);
+  border-radius: 20px;
+  padding: 48px 36px;
+  max-width: 500px;
+  width: 90vw;
+  color: #fff;
+  box-shadow: 0 10px 40px rgba(139, 92, 246, 0.15);
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  color: white;
-  overflow-y: auto;
-}
-
-.dreamDetails {
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-.dreamDate {
-  font-size: 0.9rem;
-  color: #d1c4e9;
-}
-
-.dreamTitle {
-  font-size: 1.5rem;
-  margin: 10px 0;
-}
-
-.dreamContent {
-  font-size: 1rem;
-  margin-bottom: 20px;
+  align-items: center;
 }
 
 .aiDecoded {
   width: 100%;
-  padding-top: 20px;
+  padding: 20px 0 0 0;
   border-top: 1px solid #8e6bd4;
-  background-color: #4a2c7a; /* Darker background color for AI message */
-  padding: 15px; /* Adjust padding for better spacing */
-  margin-top: 0; /* Ensure no extra margin at the top */
+  background: none;
+  margin-top: 0;
 }
 
-.aiTitle {
-  font-size: 1.2rem;
-  color: #ec4899;
-  margin-bottom: 10px;
-  display: flex; /* Use flex to align icon and text */
-  align-items: center; /* Center align icon and text vertically */
-}
-
-.aiIcon {
-  width: 10px; /* Adjust size as needed */
-  height: 10px; /* Adjust size as needed */
-  margin-right: 0.5rem; /* Space between icon and text */
-}
-
-.aiMessage {
-  font-size: 1rem;
-  color: #f8e1ff;
-}
-
-.closeOverlayButton {
-  margin-top: 20px;
-  background-color: #ec4899;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  align-self: center; /* Center align the close button */
-}
-
-.closeOverlayButton:hover {
-  background-color: #d61f69;
-}
-
-.viewMoreContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
+@media (max-width: 600px) {
+  .overlayContent {
+    padding: 24px 10px;
+  }
 }

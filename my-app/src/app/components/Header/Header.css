@@ -1,22 +1,18 @@
 .header {
-    position: relative;
-    width: 100%;
-    padding: 20px;
-    /* background: linear-gradient(to right, #7724ba,  #8642b1, #7b2cbc, #9428ec); Subtle gradient from purple to a soft pink */
-    background: linear-gradient(to bottom, rgba(119, 36, 186, 1), rgba(134, 66, 177, 0.60), rgba(123, 44, 188, 0.30), rgba(148, 40, 236, 0.01));
-    display: flex;
-    justify-content: center; /* Center the content */
-    align-items: center;
-    color: whitesmoke;
-    box-sizing: border-box;
+  margin-top: 12px !important;
+  padding: 8px 0 8px 0 !important;
+  z-index: 100 !important;
+  position: relative !important;
 }
 
 .header h1 {
-    margin: 0; /* Remove default margin */
-    line-height: 1.2; /* Set a consistent line-height */
-    font-size: 24px; /* Adjust as needed */
-    flex: 1; /* Allow h1 to grow */
-    text-align: center; /* Center text inside h1 */
+  margin: 0;
+  line-height: 1.2;
+  font-size: 24px;
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .header::after {

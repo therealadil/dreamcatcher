@@ -54,3 +54,23 @@
   bottom: 0;
   left: 0;
 }
+
+.footer-extra-padding {
+  min-height: 0 !important;
+  padding-bottom: 0 !important;
+  position: relative !important;
+  left: unset;
+  bottom: unset;
+  z-index: unset;
+}
+
+.footer, .footer-extra-padding {
+  margin-bottom: 16px !important;
+  padding-bottom: 12px !important;
+  position: relative !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}

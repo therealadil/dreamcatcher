@@ -123,6 +123,7 @@ export default function Dashboard() {
           onChange={() => {}}
         />
         <select
+          className="dashboard-select"
           style={{
             padding: '10px 16px',
             borderRadius: 24,
@@ -161,6 +162,7 @@ export default function Dashboard() {
           <span role="img" aria-label="calendar">📅</span>
         </button>
         <select
+          className="dashboard-select"
           style={{
             padding: '10px 16px',
             borderRadius: 24,

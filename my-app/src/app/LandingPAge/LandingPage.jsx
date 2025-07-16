@@ -26,11 +26,33 @@ export default function LandingPage() {
   };
   return (
     <div className="landing-page">
-      {/* Animated stars background */}
-      <div className="stars-container">
-        <div className="stars1"></div>
-        <div className="stars2"></div>
-        <div className="stars3"></div>
+      {/* Hero-specific constellation stars - Multiple overlapping groups */}
+      <div className="hero-stars-container-1">
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+      </div>
+      <div className="hero-stars-container-2">
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+      </div>
+      <div className="hero-stars-container-3">
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
+        <div className="hero-star"></div>
       </div>
 
       {/* Hero Section - Full viewport height */}

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { supabase } from '../../../lib/supabaseClient';
 import './Header.css';
 
@@ -23,16 +24,24 @@ const Header = () => {
     };
 
     const showLogoutButton = pathname === '/dashboard' || pathname === '/form';
+    const showLoginButton = pathname === '/';
 
     return (
         <header className="header">
             <div className="header-content">
                 <h1>🌙 DreamCatcher</h1>
-                {showLogoutButton && (
-                    <button className="logout-btn" onClick={handleLogout}>
-                        Logout
-                    </button>
-                )}
+                <div className="header-buttons">
+                    {showLoginButton && (
+                        <Link href="/sign-in" className="header-login-btn">
+                            My Account
+                        </Link>
+                    )}
+                    {showLogoutButton && (
+                        <button className="logout-btn" onClick={handleLogout}>
+                            Logout
+                        </button>
+                    )}
+                </div>
             </div>
         </header>
     );

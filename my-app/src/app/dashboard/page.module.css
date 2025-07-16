@@ -40,6 +40,29 @@
   margin-top: 0;
 }
 
+.dashboard-select {
+  background: #231942;
+  color: #f3e8ff;
+  border: 1.5px solid #a78bfa;
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  outline: none;
+  min-width: 120px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: 0 2px 12px rgba(139, 92, 246, 0.08);
+  transition: border 0.2s;
+}
+.dashboard-select:focus {
+  border-color: #c084fc;
+}
+.dashboard-select option {
+  background: #231942;
+  color: #f3e8ff;
+}
+
 @media (max-width: 600px) {
   .overlayContent {
     padding: 24px 10px;

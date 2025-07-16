@@ -6,6 +6,158 @@
   min-height: 100vh;
 }
 
+/* Hero-specific constellation stars - Multiple groups */
+.hero-stars-container-1,
+.hero-stars-container-2,
+.hero-stars-container-3 {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  transform-origin: center center;
+}
+
+.hero-stars-container-1 {
+  top: 0;
+  left: 0;
+  animation: constellationSpin1 90s linear infinite;
+}
+
+.hero-stars-container-2 {
+  top: -10%;
+  left: -5%;
+  animation: constellationSpin2 150s linear infinite reverse;
+}
+
+.hero-stars-container-3 {
+  top: 5%;
+  left: 10%;
+  animation: constellationSpin3 180s linear infinite;
+}
+
+.hero-star {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+.hero-star::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Group 1 - Brighter, faster stars */
+.hero-stars-container-1 .hero-star {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+}
+
+.hero-stars-container-1 .hero-star::before {
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.7);
+}
+
+/* Group 2 - Medium brightness, medium speed */
+.hero-stars-container-2 .hero-star {
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+.hero-stars-container-2 .hero-star::before {
+  width: 1px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+/* Group 3 - Dimmer, slower stars */
+.hero-stars-container-3 .hero-star {
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+.hero-stars-container-3 .hero-star::before {
+  width: 1px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Star positions using CSS variables - 7 stars per group */
+.hero-star:nth-child(1) { --top: 10%; --left: 15%; --spin: 15s; --bob: 8s; --twinkle: 4s; }
+.hero-star:nth-child(2) { --top: 25%; --left: 85%; --spin: 18s; --bob: 6s; --twinkle: 3s; }
+.hero-star:nth-child(3) { --top: 45%; --left: 20%; --spin: 22s; --bob: 10s; --twinkle: 5s; }
+.hero-star:nth-child(4) { --top: 65%; --left: 80%; --spin: 16s; --bob: 7s; --twinkle: 3.5s; }
+.hero-star:nth-child(5) { --top: 35%; --left: 60%; --spin: 25s; --bob: 9s; --twinkle: 4.5s; }
+.hero-star:nth-child(6) { --top: 75%; --left: 40%; --spin: 19s; --bob: 5s; --twinkle: 3.2s; }
+.hero-star:nth-child(7) { --top: 55%; --left: 90%; --spin: 21s; --bob: 8.5s; --twinkle: 4.2s; }
+
+/* Apply positions and animations */
+.hero-star {
+  top: var(--top);
+  left: var(--left);
+  animation: 
+    starSpin var(--spin) linear infinite,
+    starBob var(--bob) ease-in-out infinite,
+    starTwinkle var(--twinkle) ease-in-out infinite;
+}
+
+/* Different constellation rotations */
+@keyframes constellationSpin1 {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1.1); }
+}
+
+@keyframes constellationSpin2 {
+  0% { transform: rotate(0deg) scale(0.9); }
+  100% { transform: rotate(-360deg) scale(1); }
+}
+
+@keyframes constellationSpin3 {
+  0% { transform: rotate(0deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(0.8); }
+}
+
+@keyframes starSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes starBob {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-8px) translateX(3px); }
+  50% { transform: translateY(-4px) translateX(-2px); }
+  75% { transform: translateY(-12px) translateX(1px); }
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Constellation connections */
+.hero-star-connection {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform-origin: left center;
+}
+
 /* Hero Section - Full viewport height */
 .hero-section {
   display: flex;
@@ -14,6 +166,7 @@
   min-height: 100vh;
   padding: 20px;
   position: relative;
+  z-index: 1;
 }
 
 .hero-content {
@@ -190,7 +343,7 @@
   font-size: 2.5rem;
   font-weight: 500;
   margin-top: 160px;
-  margin-bottom: 200px;
+  margin-bottom: 60px;
   color: #ffffff;
   letter-spacing: -0.01em;
 }

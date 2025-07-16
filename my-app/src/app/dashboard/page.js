@@ -70,7 +70,20 @@ export default function Dashboard() {
     setAiExplanation("");
   };
 
-  if (!user) return <div className="dashboard-page"><div className="stars-container"><div className="stars1"></div><div className="stars2"></div><div className="stars3"></div></div><div className="hero-section"><div className="hero-content"><h2>Loading...</h2></div></div></div>;
+  if (!user) return (
+    <div className="dashboard-page">
+      <div className="stars-container">
+        <div className="stars1"></div>
+        <div className="stars2"></div>
+        <div className="stars3"></div>
+      </div>
+      <div style={{paddingTop: 32, textAlign: 'center'}}>
+        <h1 className="hero-title" style={{fontSize: '2.2rem', marginBottom: 8}}>Your Dream Journal</h1>
+        <p className="hero-subtitle" style={{fontSize: '1.05rem', marginBottom: 32}}>View, reflect, and decode your dreams with AI-powered insights</p>
+      </div>
+      <div style={{textAlign:'center',marginTop:40}}><h2>Loading...</h2></div>
+    </div>
+  );
 
   return (
     <div className="dashboard-page">
@@ -79,21 +92,11 @@ export default function Dashboard() {
         <div className="stars2"></div>
         <div className="stars3"></div>
       </div>
-      <section className="hero-section">
-        <div className="hero-content">
-          <div className="moon-container">
-            <span className="moon" role="img" aria-label="moon">🌙</span>
-          </div>
-          <h1 className="hero-title">Your Dream Journal</h1>
-          <p className="hero-subtitle">View, reflect, and decode your dreams with AI-powered insights</p>
-          <Link href="/form" className="cta-button">Add New Dream</Link>
-        </div>
-      </section>
-      <section className="features-section">
-        <div className="features-header">
-          <h2>Your Dreams</h2>
-          <p>All your logged dreams, ready for reflection and discovery</p>
-        </div>
+      <div style={{paddingTop: 32, textAlign: 'center'}}>
+        <h1 className="hero-title" style={{fontSize: '2.2rem', marginBottom: 8}}>Your Dream Journal</h1>
+        <p className="hero-subtitle" style={{fontSize: '1.05rem', marginBottom: 32}}>View, reflect, and decode your dreams with AI-powered insights</p>
+      </div>
+      <section className="features-section" style={{marginTop: 0}}>
         <div className="features-grid">
           {dreamEntries.length === 0 && (
             <div className="feature-card">
@@ -116,6 +119,16 @@ export default function Dashboard() {
           ))}
         </div>
       </section>
+      <button
+        className="floating-add-btn"
+        title="Add New Dream"
+        onClick={() => router.push('/form')}
+        style={{position: 'fixed', right: 32, bottom: 32, width: 60, height: 60, borderRadius: '50%', background: 'linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%)', color: '#fff', fontSize: '2.5rem', fontWeight: 600, border: 'none', boxShadow: '0 8px 24px rgba(139, 92, 246, 0.25)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, transition: 'box-shadow 0.2s, transform 0.2s'}}
+        onMouseOver={e => {e.currentTarget.style.boxShadow = '0 12px 32px rgba(236, 72, 153, 0.35)';e.currentTarget.style.transform = 'translateY(-2px) scale(1.07)';}}
+        onMouseOut={e => {e.currentTarget.style.boxShadow = '0 8px 24px rgba(139, 92, 246, 0.25)';e.currentTarget.style.transform = 'none';}}
+      >
+        +
+      </button>
       {isOverlayOpen && selectedDream && (
         <div className={styles.overlay}>
           <div className={styles.overlayContent}>

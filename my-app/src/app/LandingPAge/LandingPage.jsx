@@ -6,6 +6,7 @@ import { useRef } from 'react';
 export default function LandingPage() {
   const featuresRef = useRef(null);
   const exampleRef = useRef(null);
+  
   const handleScrollToFeatures = (e) => {
     e.preventDefault();
     if (featuresRef.current) {
@@ -15,6 +16,7 @@ export default function LandingPage() {
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  
   const handleScrollToExample = (e) => {
     e.preventDefault();
     if (exampleRef.current) {
@@ -24,38 +26,120 @@ export default function LandingPage() {
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Generate stars with varied properties and better distribution
+  const generateStars = (count, layer) => {
+    const stars = [];
+    const gridSize = Math.ceil(Math.sqrt(count * 1.5)); // Smaller grid for better spread
+    const cellSize = 100 / gridSize;
+    
+    for (let i = 0; i < count; i++) {
+      // Use grid-based positioning with some randomness
+      const gridX = Math.floor(Math.random() * gridSize);
+      const gridY = Math.floor(Math.random() * gridSize);
+      
+      // Add more randomness within each grid cell for better spread
+      const randomX = Math.random() * cellSize * 0.8; // More randomness
+      const randomY = Math.random() * cellSize * 0.8;
+      
+      const left = (gridX * cellSize) + randomX + (cellSize * 0.1);
+      const top = (gridY * cellSize) + randomY + (cellSize * 0.1);
+      
+      // Reduce minimum distance for more stars
+      const isTooClose = stars.some(star => 
+        Math.abs(star.left - left) < 4 && Math.abs(star.top - top) < 4
+      );
+      
+      if (!isTooClose) {
+        // Vary drift duration based on layer for parallax effect
+        let driftDuration;
+        if (layer === 'dim' || layer === 'dim-2') {
+          driftDuration = Math.random() * 80 + 120; // 120-200s - very slow (background)
+        } else if (layer === 'medium') {
+          driftDuration = Math.random() * 60 + 80; // 80-140s - slow
+        } else if (layer === 'bright') {
+          driftDuration = Math.random() * 40 + 60; // 60-100s - medium
+        }
+        
+        stars.push({
+          left: Math.max(2, Math.min(98, left)),
+          top: Math.max(2, Math.min(98, top)),
+          twinkleDelay: Math.random() * 12,
+          driftDelay: Math.random() * 30,
+          driftDuration: driftDuration,
+          sizeFactor: layer === 'bright' ? Math.random() * 0.8 + 0.6 : Math.random() * 0.6 + 0.3
+        });
+      }
+    }
+    
+    return stars.map((star, i) => (
+      <div
+        key={`${layer}-${i}`}
+        className={`star star-${layer}`}
+        style={{
+          '--star-top': `${star.top}%`,
+          '--star-left': `${star.left}%`,
+          '--twinkle-delay': `${star.twinkleDelay}s`,
+          '--drift-delay': `${star.driftDelay}s`,
+          '--drift-duration': `${star.driftDuration}s`,
+          '--size-factor': star.sizeFactor
+        }}
+      />
+    ));
+  };
+
+  // Generate some extra bright stars for special effects
+  const generateSpecialStars = () => {
+    const specialStars = [];
+    for (let i = 0; i < 15; i++) {
+      specialStars.push({
+        left: Math.random() * 95 + 2.5,
+        top: Math.random() * 95 + 2.5,
+        twinkleDelay: Math.random() * 10,
+        driftDelay: Math.random() * 25,
+        driftDuration: Math.random() * 30 + 50, // 50-80s - slower for special stars
+        sizeFactor: Math.random() * 0.8 + 0.8 // Smaller and more subtle
+      });
+    }
+    
+    return specialStars.map((star, i) => (
+      <div
+        key={`special-${i}`}
+        className="star star-special"
+        style={{
+          '--star-top': `${star.top}%`,
+          '--star-left': `${star.left}%`,
+          '--twinkle-delay': `${star.twinkleDelay}s`,
+          '--drift-delay': `${star.driftDelay}s`,
+          '--drift-duration': `${star.driftDuration}s`,
+          '--size-factor': star.sizeFactor
+        }}
+      />
+    ));
+  };
+
   return (
     <div className="landing-page">
-      {/* Hero-specific constellation stars - Multiple overlapping groups */}
-      <div className="hero-stars-container-1">
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-      </div>
-      <div className="hero-stars-container-2">
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-      </div>
-      <div className="hero-stars-container-3">
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
-        <div className="hero-star"></div>
+      {/* Layered starfield */}
+      <div className="starfield">
+        <div className="star-layer star-layer-1">
+          {generateStars(120, 'dim')}
+        </div>
+        <div className="star-layer star-layer-2">
+          {generateStars(100, 'dim-2')}
+        </div>
+        <div className="star-layer star-layer-3">
+          {generateStars(60, 'medium')}
+        </div>
+        <div className="star-layer star-layer-4">
+          {generateStars(30, 'bright')}
+        </div>
+        <div className="star-layer star-layer-5">
+          {generateSpecialStars()}
+        </div>
       </div>
 
-      {/* Hero Section - Full viewport height */}
+      {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
           <div className="moon-container">
@@ -66,7 +150,7 @@ export default function LandingPage() {
           <Link href="/sign-in" className="cta-button">
             Begin Your Journey
           </Link>
-          <div className="scroll-down-arrow" aria-label="Scroll to features" onClick={handleScrollToFeatures} style={{cursor:'pointer', animation: 'none'}}>
+          <div className="scroll-down-arrow" onClick={handleScrollToFeatures}>
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 15L18 24L27 15" stroke="#d1c4e9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -113,7 +197,7 @@ export default function LandingPage() {
               <p>Draw or sketch your dreams visually</p>
             </div>
           </div>
-          <div className="scroll-down-arrow" aria-label="Scroll to next section" onClick={handleScrollToExample} style={{cursor:'pointer', animation: 'none', marginTop: 48}}>
+          <div className="scroll-down-arrow" onClick={handleScrollToExample} style={{marginTop: 48}}>
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 15L18 24L27 15" stroke="#d1c4e9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -141,6 +225,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
       {/* Newsletter Section */}
       <section className="newsletter-section">
         <div className="newsletter-content">
